@@ -1,0 +1,37 @@
+# Visual Studio Code
+.vscode/
+
+# Visual Studio Code
+.vs/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# .NET
+bin/
+obj/
+.vs/
+.DS_Store
+
+# NuGet
+*.nuget.props
+*.nuget.targets
+
+# User-specific files
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
