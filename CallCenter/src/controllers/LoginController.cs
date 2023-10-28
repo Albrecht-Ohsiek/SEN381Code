@@ -17,7 +17,7 @@ namespace CallCenter.src.controllers
             string result = login.AuthenticateUser(username, password);
             if (result == "Logged in successfully.")
             {
-                return RedirectToAction("Admin", "Admin");
+                return RedirectToAction("AdminEmployees", "AdminEmployees");
             }
             else
             {
