@@ -1,0 +1,269 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header</title>
+    <style>
+        .header {
+            position: relative;
+            width: 100%;
+            height: 200px;
+        }
+
+            .header .group {
+                position: fixed;
+                width: 100%;
+                height: 200px;
+                top: 0;
+                left: 0;
+                background-color: #0065c2;
+            }
+
+            .header .overlap-group-wrapper {
+                position: absolute;
+                width: 25%;
+                height: 85%;
+                top: 5%;
+                left: 55%;
+            }
+
+            .header .notifications {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background-color: #238def;
+                border-radius: 25px;
+                border-bottom-width: 3px;
+                border-bottom-style: solid;
+                border-color: #00000080;
+                box-shadow: 0px 4px 4px #00000040;
+                display: flex;
+                justify-content: center;
+            }
+
+            .header .notification-text {
+                position: relative;
+                top: 5%;
+                text-align: center;
+                font-family: "Inter-Regular", Helvetica;
+                font-weight: 400;
+                color: #000000;
+                font-size: 26px;
+                letter-spacing: 0;
+                white-space: nowrap;
+                text-decoration: underline;
+            }
+
+            .header .div {
+                position: absolute;
+                top: 30%;
+                left: 5%;
+                font-family: "Inter-Bold", Helvetica;
+                font-weight: 700;
+                color: #000000;
+                font-size: 20px;
+                text-align: center;
+                letter-spacing: 0;
+                line-height: 30px;
+                white-space: nowrap;
+                max-height: 75px;
+                overflow-y: auto;
+                padding-right: 50%;
+            }
+                /* Style the scrollbar track for WebKit-based browsers (Chrome and Safari) */
+                .header .div::-webkit-scrollbar-track {
+                    background: #00376b;
+                }
+
+                /* Style the scrollbar thumb for WebKit-based browsers (Chrome and Safari) */
+                .header .div::-webkit-scrollbar-thumb {
+                    background: #238def;
+                }
+
+                /* Style the scrollbar track for Microsoft Edge */
+                .header .div::-ms-scrollbar-track {
+                    background: #00376b;
+                }
+
+                /* Style the scrollbar thumb for Microsoft Edge */
+                .header .div::-ms-scrollbar-thumb {
+                    background: #238def;
+                }
+
+            .header .overlap-wrapper {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            .header .logout {
+                /* button */
+                position: relative;
+                width: 7%;
+                height: 40px;
+                background-color: #00376b;
+                border-radius: 14px;
+                top: 30%;
+                left: 85%;
+                /* Text */
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "Inter-Regular", Helvetica;
+                font-weight: 400;
+                color: #ffffff;
+                font-size: 1.5em;
+            }
+
+                .header .logout:hover {
+                    text-decoration: underline;
+                }
+
+            .header .logo {
+                position: relative;
+                width: auto;
+                height: 100px;
+                object-fit: cover;
+                left: 10.5%;
+            }
+
+            .header .nav-bar {
+                position: absolute;
+                bottom: 0;
+                height: 50px;
+                left: 10%;
+                display: flex;
+                flex-direction: row;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+        .nav-bar .hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0px 30px;
+            height: 100%;
+            transition: all 0.3s;
+            width: 80px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #414141;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: normal;
+            white-space: nowrap;
+            background-color: #238def;
+        }
+
+        .nav-bar #nav1 {
+            border-radius: 5px 0px 0px 0px;
+        }
+
+        .nav-bar #nav4 {
+            border-radius: 0px 5px 0px 0px;
+        }
+
+        .nav-bar .hover:hover {
+            color: #000;
+            font-size: 25px;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="group">
+            <div class="overlap-group-wrapper">
+                <div class="notifications">
+                    <div class="notification-text">Notifications</div>
+                    <div class="div">
+                        • 3 New Requests<br />• 3 New Requests <br />• 3 New Requests<br />•
+                        3 New Requests <br />• 3 New Requests<br />• 3 New Requests
+                        <br />• 3 New Requests<br />• 3 New Requests <br />• 3 New
+                        Requests
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="logout">Logout</button>
+            <div class="frame"><img class="logo" src="../assets/logo2.PNG" /></div>
+            <div class="nav-bar">
+                <div class="hover"
+                     id="nav1"
+                     style="box-shadow: 4px -4px 4px #0000001a">
+                    Calls
+                </div>
+                <div class="hover"
+                     id="nav2"
+                     style="box-shadow: 1px -4px 4px #0000001a">
+                    Clients
+                </div>
+                <div class="hover"
+                     id="nav3"
+                     style="box-shadow: -1px -4px 4px #0000001a">
+                    Contracts
+                </div>
+                <div class="hover"
+                     id="nav4"
+                     style="box-shadow: -3px -4px 4px #0000001a">
+                    Services
+                </div>
+            </div>
+            <script>
+                // Function to update the button color based on stored state
+                function updateButtonColor(button) {
+                  const buttonId = button.id;
+                  const storedColor = sessionStorage.getItem(buttonId);
+                  if (storedColor) {
+                    button.style.backgroundColor = storedColor;
+                    button.style.color = "#ffffff"; // Set the text color as well
+                  }
+                }
+
+                // Get references to all buttons with the class "hover"
+                let buttons = document.querySelectorAll(".hover");
+
+                // Initialize button colors based on stored state or set initial colors
+                buttons.forEach(function (button) {
+                  updateButtonColor(button);
+
+                  // Set initial colors
+                  if (!sessionStorage.getItem(button.id)) {
+                    button.style.backgroundColor = "#238def";
+                    button.style.color = "#414141";
+                  }
+                });
+
+                // Add a click event listener to each button
+                buttons.forEach(function (button) {
+                  button.addEventListener("click", function () {
+                    // Reset all buttons to their original color
+                    buttons.forEach(function (btn) {
+                      btn.style.backgroundColor = "#238def"; // Set initial background color
+                      btn.style.color = "#414141"; // Set initial text color
+                    });
+
+                    // Change the background color of the clicked button to the desired color
+                    button.style.backgroundColor = "#00376b";
+                    button.style.color = "#ffffff";
+
+                    sessionStorage.setItem(button.id, "#00376b");
+                  });
+                  // Clear sessionStorage on page reload
+                  window.onbeforeunload = function () {
+                    sessionStorage.clear();
+                  };
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>

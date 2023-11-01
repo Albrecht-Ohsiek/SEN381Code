@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ContractsPanel</title>
+    <style>
+        .panel {
+            position: absolute;
+            top: 200px;
+            left: 0 !important;
+            background-color: #0065c2;
+            width: 100px;
+            bottom: 0;
+        }
+
+        .side1,
+        .side2 {
+            position: relative;
+            top: 0;
+            width: 100%;
+            height: 100px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .side1 {
+            background-color: #015099 !important;
+            color: aliceblue;
+        }
+
+        .side2 {
+            background-color: #0065c2;
+        }
+
+            .side1:hover,
+            .side2:hover {
+                color: aliceblue;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <div class="side1">
+            <img src="" alt="" />
+            <div class="panel-text">Contracts</div>
+        </div>
+        <div class="side2">
+            <img src="" alt="" />
+            <div class="panel-text">Services</div>
+        </div>
+    </div>
+    <script>
+        function goToPage(url, side) {
+            // Change the color of the clicked side
+            document.querySelector("." + side).style.backgroundColor = "#ffd700"; // Change color as needed
+
+            // Delay the redirection to visually see the color change before navigating
+            setTimeout(function () {
+                window.location.href = url; // Redirect to the specified page
+            }, 500); // Adjust the delay duration as needed
+        }
+    </script>
+</body>
+</html>

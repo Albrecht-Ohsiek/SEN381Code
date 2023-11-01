@@ -2,9 +2,197 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Service Requests</title>
 </head>
 <body>
+    @Html.Partial("~/Views/Shared/Header.cshtml")
+    <div class="sr">
+        <div class="div">
+            <div class="text-wrapper">Search Request ID:</div>
+            <div class="rectangle"></div>
+            <button type="button" class="button" id="s-button">
+                <div class="button-text">Search</div>
+            </button>
+            <div class="frame">
+                <button type="button" class="button">
+                    <div class="button-text">Advance Status</div>
+                </button>
+                <button type="button" class="button">
+                    <div class="button-text">Reassign</div>
+                </button>
+                <button type="button" class="button">
+                    <div class="button-text">Escalate</div>
+                </button>
+                <button type="button" class="button">
+                    <div class="button-text">View Details</div>
+                </button>
+                <button type="button" class="button">
+                    <div class="button-text">Close</div>
+                </button>
+            </div>
+            <div class="text-wrapper-8">SERVICE REQUESTS</div>
+            <div class="table-container">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">Priority Level</th>
+                            <th onclick="sortTable(1)">Request ID</th>
+                            <th onclick="sortTable(2)">Client Name</th>
+                            <th onclick="sortTable(3)">Status</th>
+                            <th onclick="sortTable(4)">Color</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populate this section dynamically with your data -->
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>231</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <tr>
+                            <td>High</td>
+                            <td>123</td>
+                            <td>John Doe</td>
+                            <td>Approved</td>
+                            <td><input type="color" value="#ff0000" /></td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        let ascending = true;
+        function sortTable(columnIndex) {
+            const table = document.getElementById("data-table");
+            const rows = Array.from(table.getElementsByTagName("tr"));
+            const isNumeric = columnIndex === 0 || columnIndex === 1;
 
+            rows.shift(); // Remove the header row
+
+            rows.sort((a, b) => {
+                let aText = a.getElementsByTagName("td")[columnIndex].innerText;
+                let bText = b.getElementsByTagName("td")[columnIndex].innerText;
+
+                if (isNumeric) {
+                    aText = parseInt(aText);
+                    bText = parseInt(bText);
+                }
+
+                if (ascending) {
+                    return aText > bText ? 1 : -1;
+                } else {
+                    return aText < bText ? 1 : -1;
+                }
+            });
+
+            while (table.rows.length > 1) {
+                table.deleteRow(1);
+            }
+
+            rows.forEach((row) => {
+                table.appendChild(row);
+            });
+
+            changeHeaderColor(columnIndex);
+            ascending = !ascending;
+        }
+
+        function changeHeaderColor(columnIndex) {
+            const headers = document.getElementsByTagName("th");
+            for (let i = 0; i < headers.length; i++) {
+                if (i === columnIndex) {
+                    headers[i].style.color = "#fff";
+                } else {
+                    headers[i].style.color = ""; // Reset other headers
+                }
+            }
+        }
+
+        // Get the table element
+        let table = document.getElementById("table-data");
+
+        // Get all the rows inside the table
+        let rows = table.getElementsByTagName("tr");
+
+        // Iterate through each row and attach a click event
+        for (let i = 0; i < rows.length; i++) {
+            rows[i].addEventListener("click", function () {
+                // Remove 'selected' class from all rows
+                for (let j = 0; j < rows.length; j++) {
+                    rows[j].classList.remove("selected");
+                }
+
+                // Add 'selected' class to the clicked row
+                this.classList.add("selected");
+            });
+        }
+    </script>
 </body>
 </html>

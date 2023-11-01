@@ -2,9 +2,113 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Admin Logs</title>
 </head>
 <body>
+    @Html.Partial("~/Views/Shared/Header.cshtml")
 
+    @Html.Partial("~/Views/Shared/AdminPanel.cshtml")
+    <div class="admin-logs">
+        <div class="div">
+            <div class="overlap">
+                <div class="group">
+                    <div class="overlap-group-wrapper">
+                        <div class="overlap-group">
+                            <div class="text-wrapper">View Logs</div>
+                            <img class="vector" src="img/vector.svg" />
+                        </div>
+                    </div>
+                    <div class="overlap-wrapper">
+                        <div class="overlap-2">
+                            <div class="rectangle"></div>
+                            <div class="text-wrapper-2">Employees</div>
+                            <img class="img" src="img/image.svg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-display">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-sort="requestId">Request ID</th>
+                            <th data-sort="technician">Technician</th>
+                            <th data-sort="clientName">Client Name</th>
+                            <th data-sort="callDuration">Call Duration</th>
+                            <th data-sort="status">Status</th>
+                            <th data-sort="lastCall">Last Call</th>
+                            <th data-sort="priority">Priority</th>
+                            <th data-sort="clientId">Client ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>45</td>
+                            <td>Bob Ross</td>
+                            <td>8 Aug 2023</td>
+                            <td>3:15 min</td>
+                            <td>R14</td>
+                            <td>High</td>
+                            <td>Completed</td>
+                            <td>John Doe</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>Cameron Man</td>
+                            <td>8 Aug 2023</td>
+                            <td>2:15 min</td>
+                            <td>R16</td>
+                            <td>Medium</td>
+                            <td>In Progress</td>
+                            <td>John Doe</td>
+                        </tr>
+                        <tr>
+                            <td>77</td>
+                            <td>Cinnamon Vei</td>
+                            <td>8 Aug 2023</td>
+                            <td>4:15 min</td>
+                            <td>R7</td>
+                            <td>Low</td>
+                            <td>In Progress</td>
+                            <td>John Doe</td>
+                        </tr>
+                        <tr>
+                            <td>87</td>
+                            <td>Happy Sad</td>
+                            <td>8 Aug 2023</td>
+                            <td>3:35 min</td>
+                            <td>R17</td>
+                            <td>High</td>
+                            <td>Withdrawn</td>
+                            <td>John Doe</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-wrapper-29">REQUEST LOGS</div>
+
+            <div class="group-9">
+                <div class="text-wrapper-35">Search:</div>
+                <div class="rectangle-2"></div>
+                <div class="overlap-6"><div class="text-wrapper-36">Search</div></div>
+            </div>
+            <img class="line-3" src="img/line-16.svg" />
+        </div>
+    </div>
+    <script>
+        const headerCells = document.querySelectorAll('.table-display th');
+        let selectedHeader = null;
+
+        headerCells.forEach(headerCell => {
+            headerCell.addEventListener('click', () => {
+                if (selectedHeader) {
+                    selectedHeader.classList.remove('selected');
+                }
+                selectedHeader = headerCell;
+                selectedHeader.classList.add('selected');
+            });
+        });
+    </script>
+</body>
 </body>
 </html>

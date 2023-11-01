@@ -3,8 +3,125 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        /* General styles */
+        .client-maintenance {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+        }
+
+            .client-maintenance .div {
+                width: 80%;
+                height: 1024px;
+                position: relative;
+                top: 250px;
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Center the table horizontally */
+            }
+
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            justify-content: center;
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+
+        th {
+            background-color: #d6ebff;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            width: 320px; /* Adjust width to accommodate label and input */
+            margin-bottom: 10px; /* Optional margin for spacing */
+        }
+
+        .search-label {
+            margin-right: 10px; /* Space between label and search bar */
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            height: 50px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            height: 100%;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            height: 100%;
+            width: 100px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .client-maintenance .head {
+            display: flex;
+            flex-direction: row;
+            gap: 550px;
+        }
+    </style>
 </head>
 <body>
+    @Html.Partial("~/Views/Shared/Header.cshtml")
+    <div class="client-maintenance">
+        <div class="div">
+            <div class="head">
+                <h1>CLIENT MAINTENANCE</h1>
+                <div class="search-container">
+                    <div class="search-label">Search by ID</div>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Enter ID" />
+                        <button type="submit" style="margin-left: -50px; border-radius: 10px 0px 0px 10px;">Search</button>
+                    </div>
+                </div>
+            </div>
 
+            <hr />
+
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Contact</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="" alt="" /></td>
+                        <td>Names</td>
+                        <td>54</td>
+                        <td>054 874 9512</td>
+                        <td><button>View Details</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
