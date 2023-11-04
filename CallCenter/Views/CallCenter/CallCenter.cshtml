@@ -57,7 +57,132 @@
     </style>
 </head>
 <body>
+    @Html.Partial("~/Views/Shared/Header.cshtml")
+    <div class="call-centre">
+        <div class="phone-calls">
+            <div class="heading">Phone Calls</div>
+            <div class="calls">
+                <img class="" src="img/vector.svg" />
+                <!-- This is for the call symbol -->
+                <button type="submit" class="button" id="answer">Answer Call</button>
+                <button type="submit" class="button" id="end">End Call</button>
+            </div>
 
+            <div class="caller-details">
+                Call Timer: <br />
+                <br />
+                Caller ID:
+            </div>
+
+            <div class="history">
+                <table>
+                    <thead>
+                        <h3>Caller History:</h3>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>data1</td>
+                            <td>data2</td>
+                        </tr>
+                        <tr>
+                            <td>data1</td>
+                            <td>data2</td>
+                        </tr>
+                        <tr>
+                            <td>data1</td>
+                            <td>data2</td>
+                        </tr>
+                        <tr>
+                            <td>data1</td>
+                            <td>data2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="priority-level">
+                <div class="text-wrapper-5">Priority Level:</div>
+                <div class="dropdown">Priority Level&nbsp;⮟</div>
+            </div>
+            <div class="funcs">
+                <button type="submit" class="button" id="WR">
+                    Generate Work Request
+                </button>
+                <button type="submit" class="button" id="ER">
+                    Add Call to Existing Request
+                </button>
+            </div>
+        </div>
+        <div class="client-details">
+            <div class="heading">Client Details</div>
+            <div class="overlap-6">
+                <div class="rectangle-2"></div>
+                <div class="text-wrapper-10">View Client Contract Details</div>
+            </div>
+            <div class="search">
+                <div class="default">Search:</div>
+                <div class="search-bar"></div>
+                <div class="button" id="Search">Search</div>
+            </div>
+            <div class="client">
+                <table id="details">
+                    <tr>
+                        <td><span class="text-wrapper-5">Client Name:</span></td>
+                        <td>
+                            <span class="text-wrapper-4" id="c-name"> Elaine de Kock</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="text-wrapper-5">Client ID:</span></td>
+                        <td><span class="text-wrapper-4" id="c-id"> 329I</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="text-wrapper-5">Phone Number:</span></td>
+                        <td>
+                            <span class="text-wrapper-4" id="c-phone"> 015 678 9221</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="text-wrapper-5">Address:</span></td>
+                        <td>
+                            <span class="text-wrapper-4" id="c-address">
+                                101 Bulawayo Street
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="text-wrapper-5">Last Call Date:</span></td>
+                        <td>
+                            <span class="text-wrapper-4" id="c-last"> 03/10/2023</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="text-wrapper-14">Notes:</div>
+            <div class="overlap-7">
+                <table id="notes">
+                    <tr>
+                        <td>
+                            Client has been very difficult with pronunciation of her name.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Client asked for a female call center agent to be her contact
+                            point from the next call.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Client has a history of calling after hours.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
     <button type="button" onclick="openModal()">Generate Work Request (Express)</button>
 
     <!-- modal form for generating express work requests -->
