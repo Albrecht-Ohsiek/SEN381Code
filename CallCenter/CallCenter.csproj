@@ -19,6 +19,9 @@
     <None Update="Database\SEN381_DATABASE.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Database\SEN381_DATABASE_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

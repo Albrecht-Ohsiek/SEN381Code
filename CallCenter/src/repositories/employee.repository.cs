@@ -38,11 +38,22 @@ namespace CallCenter.Repository
                             {
                                 employeeId = reader.GetGuid(reader.GetOrdinal("employeeId")),
                                 employeeName = reader.GetString(reader.GetOrdinal("employeeName")),
-                                department = (Department)reader.GetInt32(reader.GetOrdinal("department")),
                                 emailAddress = reader.GetString(reader.GetOrdinal("emailAddress")),
                                 phoneNumber = reader.GetString(reader.GetOrdinal("phoneNumber")),
-
                             };
+                            string departmentValue = reader.GetString(reader.GetOrdinal("department"));
+                            if (Enum.TryParse<Department>(departmentValue, out Department department))
+                            {
+                                employee.department = department;
+                            }
+                            else
+                            {
+                                // Log or handle the situation where the enum value is not found
+                                // You might want to provide a default value or raise an exception
+                                // depending on your application's requirements.
+                                // Example: employee.department = Department.Default;
+                            }
+
                             employees.Add(employee);
                         }
                     }
