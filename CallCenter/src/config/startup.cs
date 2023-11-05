@@ -1,3 +1,5 @@
+using CallCenter.Repository;
+
 namespace CallCenter.Config
 {
     public class Startup
@@ -22,6 +24,16 @@ namespace CallCenter.Config
             services.AddSingleton(databaseConfig);
             services.AddSingleton<DatabaseServices>();
 
+            services.AddTransient<CallRepository>();
+            services.AddTransient<CallReportRepository>();
+            services.AddTransient<ClientRepository>();
+            services.AddTransient<ContractRepository>();
+            services.AddTransient<EmployeeRepository>();
+            services.AddTransient<RequestLogRepository>();
+            services.AddTransient<TechnicianRepository>();
+            services.AddTransient<WorkRepository>();
+            services.AddTransient<WorkRequestRepository>();
+
             services.AddLogging();
             services.AddControllersWithViews();
 
@@ -34,7 +46,7 @@ namespace CallCenter.Config
                         .AllowAnyMethod();
                 });
             });
-            
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment environment)
