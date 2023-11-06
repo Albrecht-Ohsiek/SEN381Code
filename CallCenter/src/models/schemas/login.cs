@@ -2,19 +2,17 @@
 {
     public class Login
 	{
-        private int EmployeeID;
+        private Guid employeeId;
         private string username;
         private string password;
-        private string department;
         public Login()
         {
 
         }
 
-        public int EmployeeID1 { get => EmployeeID; set => EmployeeID = value; }
+        public Guid EmployeeId { get => employeeId; set => employeeId = value; }
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
-        public string Department { get => department; set => department = value; }
     }
 }
 
