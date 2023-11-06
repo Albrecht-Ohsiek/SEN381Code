@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CallCenter.Models.requestLogs>;
+﻿@model IEnumerable<CallCenter.Models.HydratedRequestLogResponse>;
 
 <!DOCTYPE html>
 <html>
@@ -42,7 +42,6 @@
                             <th data-sort="status">Status</th>
                             <th data-sort="lastCall">Last Call</th>
                             <th data-sort="priority">Priority</th>
-                            <th data-sort="clientId">Client ID</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,7 +51,7 @@
                                 <td>@Html.DisplayFor(modelItem => item.requestId)</td>
                             </tr>
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.technician)</td>
+                                <td>@Html.DisplayFor(modelItem => item.employeeName)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayFor(modelItem => item.clientName)</td>
@@ -64,13 +63,10 @@
                                 <td>@Html.DisplayFor(modelItem => item.status)</td>
                             </tr>
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.lastCall)</td>
+                                <td>@Html.DisplayFor(modelItem => item.lastCallDate)</td>
                             </tr>
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.priority)</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => item.clientId)</td>
+                                <td>@Html.DisplayFor(modelItem => item.priorityLevel)</td>
                             </tr>
                         }
                     </tbody>

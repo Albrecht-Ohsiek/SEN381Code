@@ -1,7 +1,4 @@
 ﻿@model IEnumerable<CallCenter.Models.Employee>;
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 <!DOCTYPE html>
 <html>
@@ -12,8 +9,8 @@
 </head>
 
 <body>
-    @Html.Partial("~/Views/Shared/AdminPanel.cshtml")
     @Html.Partial("~/Views/Shared/Header.cshtml")
+    @Html.Partial("~/Views/Shared/AdminPanel.cshtml")
     <div class="admin-employees">
         <div class="div">
             <div class="overlap">
@@ -60,23 +57,23 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.employeeId)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.employeeName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.department)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.emailAddress)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.phoneNumber)
-                                </td>
-                            </tr>
+                        <tr>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.employeeId)
+                        </td>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.employeeName)
+                        </td>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.department)
+                        </td>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.emailAddress)
+                        </td>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.phoneNumber)
+                        </td>
+                        </tr>
                         }
 
                     </tbody>

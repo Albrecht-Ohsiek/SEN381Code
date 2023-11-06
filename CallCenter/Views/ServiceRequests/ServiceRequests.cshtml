@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CallCenter.Models.WorkRequests>;
+﻿@model IEnumerable<CallCenter.Models.WorkRequest>;
 
 <!DOCTYPE html>
 <html>
@@ -200,20 +200,20 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayNameFor(model => model.Priority)</td>
+                                <td>@Html.DisplayNameFor(model => model.priority)</td>
                             </tr>
                             <tr>
                                 <td>@Html.DisplayNameFor(model => model.requestId)</td>
                             </tr>
                             <tr>
-                                <td>@Html.DisplayNameFor(model => model.clientName)</td>
+                                <td>@Html.DisplayNameFor(model => model.clientId)</td>
                             </tr>
                             <tr>
-                                <td>@Html.DisplayNameFor(model => model.Status)</td>
+                                <td>@Html.DisplayNameFor(model => model.status)</td>
                             </tr>
                             <tr>
                                 @{
-                                    var priorityText = modelItem.Priority;
+                                    var priorityText = item.priority;
                                 }
 
                                 <td>
