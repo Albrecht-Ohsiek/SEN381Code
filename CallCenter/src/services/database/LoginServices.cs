@@ -1,7 +1,5 @@
-﻿using CallCenter.DataAccess;
-using CallCenter.Models;
+﻿using CallCenter.Models;
 using CallCenter.Repository;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace CallCenter.Services
 {

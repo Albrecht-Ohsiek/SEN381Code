@@ -1,5 +1,3 @@
-using CallCenter.Types;
-
 namespace CallCenter.Models
 {
     public class AddLoginRequest
