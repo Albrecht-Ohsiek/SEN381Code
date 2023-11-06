@@ -10,19 +10,21 @@ namespace CallCenter.Controllers
     [Route("/CallCenter")]
     public class CallCenterController : Controller
     {
+        private readonly ClientRepository _clientRepository;
         private readonly CallRepository _callRepository;
         private readonly DatabaseServices _dbService;
 
-        public CallCenterController(DatabaseServices dbService, CallRepository callRepository)
+        public CallCenterController(DatabaseServices dbService, CallRepository callRepository, ClientRepository clientRepository)
         {
             _callRepository = callRepository;
             _dbService = dbService;
+            _clientRepository = clientRepository;
         }
 
         [HttpGet]
-        public IActionResult CallCenter()
+        public async Task<IActionResult> CallCenter()
         {
-            return View("CallCenter");
+            return View();
         }
         //display technicians in dropdown menu of express work request form
         [HttpGet("GetTechnicians")]

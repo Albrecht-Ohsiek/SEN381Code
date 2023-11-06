@@ -36,10 +36,9 @@ namespace CallCenter.Repository
                             Login login = new Login
                             {
                                 EmployeeId = reader.GetGuid(reader.GetOrdinal("employeeId")),
-                                Username = reader.GetString(reader.GetOrdinal("employeeName")),
-                                Password = reader.GetString(reader.GetOrdinal("employeeName"))
-
-                            };
+                                Username = reader.GetString(reader.GetOrdinal("username")),
+                                Password = reader.GetString(reader.GetOrdinal("password"))
+                            };
 
                             logins.Add(login);
                         }
