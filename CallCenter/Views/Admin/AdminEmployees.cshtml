@@ -1,17 +1,20 @@
-﻿@{
+﻿@model IEnumerable<CallCenter.Models.Employee>
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title></title>
 </head>
+
 <body>
-    @Html.Partial("~/Views/Shared/Header.cshtml");
+    @Html.Partial("~/Views/Shared/Header.cshtml")
     @Html.Partial("~/Views/Shared/AdminPanel.cshtml")
-    @ViewBag.Message;
+    @ViewBag.Message
     <div class="admin-employees">
         <div class="div">
             <div class="overlap">
@@ -44,65 +47,57 @@
                             </th>
                             <th class="sortable" data-sort="serviceArea">Service Area</th>
                             <th class="sortable" data-sort="serviceTypes">Service Types</th>
-                            <th class="sortable" data-sort="certificationLevel">
-                                Certification Level
-                            </th>
-                            <th class="sortable" data-sort="availability">Availability</th>
-                        </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>43</td>
-                            <td>John Doe</td>
-                            <td>000-000-0000</td>
-                            <td>Brooklyn</td>
-                            <td>Network</td>
-                            <td>C1 Certificate</td>
-                            <td>Available</td>
-                        </tr>
-                        <tr>
-                            <td>21</td>
-                            <td>Jane Doe</td>
-                            <td>000-000-0000</td>
-                            <td>Brooklyn</td>
-                            <td>VoiP</td>
-                            <td>C1 Certificate</td>
-                            <td>Available</td>
-                        </tr>
-                        <tr>
-                            <td>65</td>
-                            <td>Charles Lee</td>
-                            <td>000-000-0000</td>
-                            <td>Brooklyn</td>
-                            <td>Network</td>
-                            <td>C1 Certificate</td>
-                            <td>Unavailable</td>
-                        </tr>
-                        <tr>
-                            <td>34</td>
-                            <td>Mc Jager</td>
-                            <td>000-000-0000</td>
-                            <td>Brooklyn</td>
-                            <td>Network</td>
-                            <td>C1 Certificate</td>
-                            <td>Available</td>
-                        </tr>
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.employeeId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.employeeName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.phoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.department)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <p>No data available.</p>
+                        }
+
                     </tbody>
                 </table>
             </div>
             <div class="overlap-wrapper">
-                <div class="overlap-3"><div class="text-wrapper-26">Add</div></div>
+                <div class="overlap-3">
+                    <div class="text-wrapper-26">Add</div>
+                </div>
             </div>
             <div class="group-6">
-                <div class="overlap-3"><div class="text-wrapper-27">Remove</div></div>
+                <div class="overlap-3">
+                    <div class="text-wrapper-27">Remove</div>
+                </div>
             </div>
             <div class="group-7">
-                <div class="overlap-3"><div class="text-wrapper-28">Edit</div></div>
+                <div class="overlap-3">
+                    <div class="text-wrapper-28">Edit</div>
+                </div>
             </div>
             <div class="group-8">
                 <div class="text-wrapper-29">Search:</div>
                 <div class="rectangle-2"></div>
-                <div class="overlap-4"><div class="text-wrapper-30">Search</div></div>
+                <div class="overlap-4">
+                    <div class="text-wrapper-30">Search</div>
+                </div>
             </div>
             <div class="text-wrapper-31">EMPLOYEES</div>
             <img class="line-2" src="img/line-16.svg" />
@@ -123,4 +118,5 @@
         });
     </script>
 </body>
+
 </html>

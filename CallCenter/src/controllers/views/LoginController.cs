@@ -24,7 +24,7 @@ namespace CallCenter.Controllers
             string result = await _loginServices.AuthenticateUser(user);
             if (result == "Login Successful")
             {
-                return RedirectToAction("AdminEmployees", "AdminEmployees");
+                return RedirectToAction("AdminEmployees", "Admin");
             }
             else
             {
