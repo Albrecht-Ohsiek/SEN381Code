@@ -38,12 +38,28 @@ namespace CallCenter.Repository
                             {
                                 contractId = reader.GetGuid(reader.GetOrdinal("contractId")),
                                 clientId = reader.GetGuid(reader.GetOrdinal("clientId")),
-                                contractType = (ContractType)reader.GetInt32(reader.GetOrdinal("contractType")),
                                 contractDetails = reader.GetString(reader.GetOrdinal("contractDetails")),
                                 serviceLevel = reader.GetInt32(reader.GetOrdinal("serviceLevel")),
-                                contractStatus = (ContractStatus)reader.GetInt32(reader.GetOrdinal("contractStatus")),
-
                             };
+                            string contractTypeValue = reader.GetString(reader.GetOrdinal("department"));
+                            if (Enum.TryParse<ContractType>(contractTypeValue, out ContractType contractType))
+                            {
+                                contract.contractType = contractType;
+                            }
+                            else
+                            {
+                                contract.contractType  = ContractType.Undefined;
+                            }
+                            string contractStatusValue = reader.GetString(reader.GetOrdinal("contractStatus"));
+                            if (Enum.TryParse<ContractStatus>(contractTypeValue, out ContractStatus contractStatus))
+                            {
+                                contract.contractStatus = contractStatus;
+                            }
+                            else
+                            {
+                                contract.contractStatus  = ContractStatus.Undefined;
+                            }
+
                             contracts.Add(contract);
                         }
                     }

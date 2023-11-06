@@ -38,11 +38,19 @@ namespace CallCenter.Repository
                             {
                                 employeeId = reader.GetGuid(reader.GetOrdinal("employeeId")),
                                 employeeName = reader.GetString(reader.GetOrdinal("employeeName")),
-                                department = (Department)reader.GetInt32(reader.GetOrdinal("department")),
                                 emailAddress = reader.GetString(reader.GetOrdinal("emailAddress")),
                                 phoneNumber = reader.GetString(reader.GetOrdinal("phoneNumber")),
-
                             };
+                            string departmentValue = reader.GetString(reader.GetOrdinal("department"));
+                            if (Enum.TryParse<Department>(departmentValue, out Department department))
+                            {
+                                employee.department = department;
+                            }
+                            else
+                            {
+                                employee.department = Department.Undefined;
+                            }
+
                             employees.Add(employee);
                         }
                     }

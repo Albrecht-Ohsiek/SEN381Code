@@ -39,12 +39,19 @@ namespace CallCenter.Repository
                                 clientId = reader.GetGuid(reader.GetOrdinal("clientId")),
                                 clientName = reader.GetString(reader.GetOrdinal("clientName")),
                                 phoneNumber = reader.GetString(reader.GetOrdinal("phoneNumber")),
-                                clientType = (ClientTypes)reader.GetInt32(reader.GetOrdinal("clientType")),
                                 clientAddress = reader.GetString(reader.GetOrdinal("address")),
                                 lastCallDate = reader.GetDateTime(reader.GetOrdinal("lastCallDate")),
                                 clientNotes = reader.GetString(reader.GetOrdinal("clientNotes"))
-
                             };
+                            string clientTypeValue = reader.GetString(reader.GetOrdinal("clientType"));
+                            if (Enum.TryParse<ClientTypes>(clientTypeValue, out ClientTypes clientTypes))
+                            {
+                                client.clientType = clientTypes;
+                            }
+                            else
+                            {
+                                client.clientType = ClientTypes.Undefined;
+                            }
                             clients.Add(client);
                         }
                     }

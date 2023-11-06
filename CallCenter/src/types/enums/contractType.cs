@@ -6,6 +6,7 @@ namespace CallCenter.Types
         Premium_Support_Plan,
         Comprehensive_Coverage_Plan,
         Seasonal_Tune_Up_Plan,
-        Customizable_Service_Plan
+        Customizable_Service_Plan,
+        Undefined
     }
 }

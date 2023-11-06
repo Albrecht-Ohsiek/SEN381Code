@@ -1,21 +1,28 @@
-﻿using CallCenter.Services;
+﻿using CallCenter.Models;
+using CallCenter.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CallCenter.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly LoginServices _loginServices;
+
+        public LoginController(LoginServices loginServices)
+        {
+            _loginServices = loginServices;
+        }
+
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(string username, string password)
+        public async Task<IActionResult> Login(AddLoginRequest user)
         {
-            LoginServices login = new LoginServices();
-            string result = login.AuthenticateUser(username, password);
-            if (result == "Logged in successfully.")
+            string result = await _loginServices.AuthenticateUser(user);
+            if (result == "Login Successful")
             {
                 return RedirectToAction("AdminEmployees", "AdminEmployees");
             }
