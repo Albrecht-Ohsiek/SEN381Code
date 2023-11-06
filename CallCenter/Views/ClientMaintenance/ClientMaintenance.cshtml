@@ -1,5 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<CallCenter.Models.Client>;
+
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title></title>
@@ -11,15 +14,16 @@
             justify-content: center;
         }
 
-            .client-maintenance .div {
-                width: 80%;
-                height: 1024px;
-                position: relative;
-                top: 250px;
-                display: flex;
-                flex-direction: column;
-                align-items: center; /* Center the table horizontally */
-            }
+        .client-maintenance .div {
+            width: 80%;
+            height: 1024px;
+            position: relative;
+            top: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Center the table horizontally */
+        }
 
         table {
             width: 90%;
@@ -39,12 +43,15 @@
         .search-container {
             display: flex;
             align-items: center;
-            width: 320px; /* Adjust width to accommodate label and input */
-            margin-bottom: 10px; /* Optional margin for spacing */
+            width: 320px;
+            /* Adjust width to accommodate label and input */
+            margin-bottom: 10px;
+            /* Optional margin for spacing */
         }
 
         .search-label {
-            margin-right: 10px; /* Space between label and search bar */
+            margin-right: 10px;
+            /* Space between label and search bar */
         }
 
         .search-bar {
@@ -84,6 +91,7 @@
         }
     </style>
 </head>
+
 <body>
     @Html.Partial("~/Views/Shared/Header.cshtml")
     <div class="client-maintenance">
@@ -94,7 +102,8 @@
                     <div class="search-label">Search by ID</div>
                     <div class="search-bar">
                         <input type="text" placeholder="Enter ID" />
-                        <button type="submit" style="margin-left: -50px; border-radius: 10px 0px 0px 10px;">Search</button>
+                        <button type="submit"
+                            style="margin-left: -50px; border-radius: 10px 0px 0px 10px;">Search</button>
                     </div>
                 </div>
             </div>
@@ -104,7 +113,6 @@
             <table>
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Name</th>
                         <th>ID</th>
                         <th>Contact</th>
@@ -112,16 +120,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><img src="" alt="" /></td>
-                        <td>Names</td>
-                        <td>54</td>
-                        <td>054 874 9512</td>
-                        <td><button>View Details</button></td>
-                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.clientName)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.clientId)</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.phoneNumber)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.clientId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.clientId">Details</a>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </div>
 </body>
+
 </html>

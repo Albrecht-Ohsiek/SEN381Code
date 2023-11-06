@@ -1,9 +1,163 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<CallCenter.Models.WorkRequests>;
+
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Service Requests</title>
+    <style>
+        .sr {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+        }
+
+
+        .sr .button-text {
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .sr .button {
+            position: relative;
+            width: 200px;
+            height: 41px;
+            background-color: #00376b;
+            border-radius: 14px;
+        }
+
+        .sr .table-container {
+            position: relative;
+            top: 350px;
+            width: 90%;
+            border: #0065c240 solid 1px;
+            margin: 0 auto;
+            height: 380px;
+            background-color: #d6ebff;
+            overflow-y: auto;
+        }
+
+        .sr table {
+            border-collapse: collapse;
+            width: 100%;
+            border-spacing: 4;
+            height: 300px;
+            display: table;
+        }
+
+        .sr th {
+            position: sticky;
+            top: 0;
+            background-color: #238def;
+            z-index: 2;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000;
+            font-size: 20px;
+        }
+
+        .sr td {
+            z-index: 1;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000;
+            font-size: 15px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+        }
+
+        .sr tbody {
+            max-height: 400px;
+            overflow: auto;
+            border-spacing: 0;
+        }
+
+        .sr tr {
+            margin-bottom: 10px;
+        }
+
+        .sr tr:nth-child(even) {
+            background-color: #c3dffa;
+            border-collapse: collapse;
+            border-radius: 10px;
+        }
+
+        .sr tr.selected {
+            background-color: #ffd700;
+        }
+
+        .sr .div {
+            background-color: #ffffff;
+            overflow-x: hidden;
+            width: 1625px;
+            height: 967px;
+            position: relative;
+        }
+
+        .sr .text-wrapper {
+            position: absolute;
+            top: 304px;
+            left: 831px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .sr .rectangle {
+            position: absolute;
+            width: 260px;
+            height: 41px;
+            top: 292px;
+            left: 1027px;
+            background-color: #ffffff;
+            border-radius: 14px;
+            border: 1px solid;
+            border-color: #00000080;
+        }
+
+        .sr .text-wrapper-8 {
+            position: absolute;
+            top: 301px;
+            left: 210px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 32px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .sr .frame {
+            position: relative;
+            top: 850px;
+            text-align: center;
+        }
+
+        .sr #s-button {
+            position: relative;
+            top: 295px;
+            left: 1300px;
+        }
+    </style>
 </head>
+
 <body>
     @Html.Partial("~/Views/Shared/Header.cshtml")
     <div class="sr">
@@ -43,85 +197,49 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Populate this section dynamically with your data -->
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>231</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Priority)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.requestId)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.clientName)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayNameFor(model => model.Status)</td>
+                            </tr>
+                            <tr>
+                                @{
+                                    var priorityText = modelItem.Priority;
+                                }
+
+                                <td>
+                                    @if (string.IsNullOrEmpty(priorityText))
+                                    {
+                                        <span style="color: white;">No Priority</span>
+                                    }
+                                    else if (priorityText == "High")
+                                    {
+                                        <span style="color: red;">@priorityText</span>
+                                    }
+                                    else if (priorityText == "Medium")
+                                    {
+                                        <span style="color: orange;">@priorityText</span>
+                                    }
+                                    else if (priorityText == "Low")
+                                    {
+                                        <span style="color: green;">@priorityText</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@priorityText</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -195,4 +313,5 @@
         }
     </script>
 </body>
+
 </html>

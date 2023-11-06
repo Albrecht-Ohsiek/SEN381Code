@@ -1,12 +1,75 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<CallCenter.Models.Contract>
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        .contract-maintenance {
+            position: relative;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            top: 250px;
+        }
+
+        .contract-maintenance .div {
+            background-color: #ffffff;
+            overflow-x: hidden;
+            width: 1625px;
+            height: 1152px;
+            position: relative;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:first-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        tr:last-child {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    </style>
 </head>
+
 <body>
     @Html.Partial("~/Views/Shared/Header.cshtml")
     @Html.Partial("~/Views/Shared/ContractPanel.cshtml")
-
+    <div class="contract-maintenance">
+        <div class="div">
+            <h1>Contract Details</h1>
+            <table>
+                @foreach(var item in Model){
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => item.contractType)</td>
+                        <td> @Html.DisplayFor(modelItem => item.contractDetails)</td>
+                        <td> @Html.DisplayFor(modelItem => item.serviceLevel)</td>
+                    </tr>
+                }
+                
+            </table>
+        </div>
+    </div>
 </body>
+
 </html>

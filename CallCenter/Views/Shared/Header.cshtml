@@ -262,6 +262,45 @@
                     sessionStorage.clear();
                   };
                 });
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    // Get the element with id="nav1"
+                    const callsNav = document.getElementById('nav1');
+
+                    // Add click event listener to redirect to CallCenter.cshtml
+                    callsNav.addEventListener('click', function () {
+                        window.location.href = '@Url.Action("CallCenter", "CallCenter")';
+                    });
+                });
+
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    // Get the element with id="nav2"
+                    const callsNav = document.getElementById('nav2');
+
+                    // Add click event listener to redirect to ClientMaintenance.cshtml
+                    callsNav.addEventListener('click', function () {
+                        window.location.href = '@Url.Action("ClientMaintenance", "ClientMaintenance")';
+                    });
+                });
+
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    // Get the element with id="nav3"
+                    const callsNav = document.getElementById('nav3');
+
+                    // Add click event listener to redirect to ContractMaintenanceContracts.cshtml
+                    callsNav.addEventListener('click', function () {
+                        window.location.href = '@Url.Action("ContractMaintenanceContracts","ContractMaintenanceContracts")';
+                    });
+                });
+
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    // Get the element with id="nav4"
+                    const callsNav = document.getElementById('nav4');
+
+                    // Add click event listener to redirect to ServiceRequests.cshtml
+                    callsNav.addEventListener('click', function () {
+                        window.location.href = '@Url.Action("ServiceRequests", "ServiceRequests")';
+                    });
+                });
             </script>
         </div>
     </div>

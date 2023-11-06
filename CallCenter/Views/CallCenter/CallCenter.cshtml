@@ -1,46 +1,64 @@
-﻿@{
+﻿@model CallCenter.Models.Client;
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>CallCenter</title>
     <style>
+        #timer {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+
         /* Style for the form container */
         #modalForm {
             display: none;
-            max-width: 300px; /* Adjust the width as needed */
+            max-width: 300px;
+            /* Adjust the width as needed */
             margin: 20px;
         }
 
         /* Style for labels */
         label {
-            display: block; /* Make labels appear on a new line */
-            margin-top: 10px; /* Add some margin above each label */
+            display: block;
+            /* Make labels appear on a new line */
+            margin-top: 10px;
+            /* Add some margin above each label */
             font-weight: bold;
         }
 
         /* Style for inputs */
         input[type="text"],
         select {
-            width: 100%; /* Make inputs expand to fill the container width */
+            width: 100%;
+            /* Make inputs expand to fill the container width */
             padding: 5px;
-            margin-top: 5px; /* Add some margin above each input */
-            border: 1px solid #ccc; /* Add a simple border */
-            border-radius: 5px; /* Add rounded corners */
+            margin-top: 5px;
+            /* Add some margin above each input */
+            border: 1px solid #ccc;
+            /* Add a simple border */
+            border-radius: 5px;
+            /* Add rounded corners */
         }
 
         /* Style for checkboxes and their labels container */
         .checkbox-container {
-            display: flex; /* Display checkboxes and labels next to each other */
-            align-items: center; /* Center vertically */
+            display: flex;
+            /* Display checkboxes and labels next to each other */
+            align-items: center;
+            /* Center vertically */
         }
 
         /* Style for checkboxes */
         input[type="checkbox"] {
-            margin-right: 5px; /* Add some space between the checkbox and label */
+            margin-right: 5px;
+            /* Add some space between the checkbox and label */
         }
 
         /* Style for submit and close buttons */
@@ -53,23 +71,21 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
     </style>
 </head>
+
 <body>
     @Html.Partial("~/Views/Shared/Header.cshtml")
     <div class="call-centre">
         <div class="phone-calls">
             <div class="heading">Phone Calls</div>
             <div class="calls">
-                <img class="" src="img/vector.svg" />
-                <!-- This is for the call symbol -->
-                <button type="submit" class="button" id="answer">Answer Call</button>
-                <button type="submit" class="button" id="end">End Call</button>
+                <button type="submit" class="button" id="answer" onclick="startTimer()">Answer Call</button>
+                <button type="submit" class="button" id="end" onclick="stopTimer()">End Call</button>
             </div>
 
             <div class="caller-details">
-                Call Timer: <br />
+                Call Timer: <p id="timer">Timer will appear here</p><br />
                 <br />
                 Caller ID:
             </div>
@@ -80,30 +96,20 @@
                         <h3>Caller History:</h3>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>data1</td>
-                            <td>data2</td>
-                        </tr>
-                        <tr>
-                            <td>data1</td>
-                            <td>data2</td>
-                        </tr>
-                        <tr>
-                            <td>data1</td>
-                            <td>data2</td>
-                        </tr>
-                        <tr>
-                            <td>data1</td>
-                            <td>data2</td>
-                        </tr>
+
                     </tbody>
                 </table>
             </div>
             <div class="priority-level">
-                <div class="text-wrapper-5">Priority Level:</div>
-                <div class="dropdown">Priority Level&nbsp;⮟</div>
+                <label for="priority">Select Priority:</label>
+                <select id="priority" name="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
             </div>
             <div class="funcs">
+                <button type="button" onclick="openModal()">Generate Work Request (Express)</button>
                 <button type="submit" class="button" id="WR">
                     Generate Work Request
                 </button>
@@ -128,19 +134,22 @@
                     <tr>
                         <td><span class="text-wrapper-5">Client Name:</span></td>
                         <td>
-                            <span class="text-wrapper-4" id="c-name"> Elaine de Kock</span>
+                            <span class="text-wrapper-4" id="c-name">@Html.DisplayNameFor(model =>
+                                model.clientName)</span>
                         </td>
                     </tr>
 
                     <tr>
                         <td><span class="text-wrapper-5">Client ID:</span></td>
-                        <td><span class="text-wrapper-4" id="c-id"> 329I</span></td>
+                        <td><span class="text-wrapper-4" id="c-id">@Html.DisplayNameFor(model => model.clientId)</span>
+                        </td>
                     </tr>
 
                     <tr>
                         <td><span class="text-wrapper-5">Phone Number:</span></td>
                         <td>
-                            <span class="text-wrapper-4" id="c-phone"> 015 678 9221</span>
+                            <span class="text-wrapper-4" id="c-phone"> @Html.DisplayNameFor(model =>
+                                model.phoneNumber)</span>
                         </td>
                     </tr>
 
@@ -148,7 +157,7 @@
                         <td><span class="text-wrapper-5">Address:</span></td>
                         <td>
                             <span class="text-wrapper-4" id="c-address">
-                                101 Bulawayo Street
+                                @Html.DisplayNameFor(model => model.clientAddress)
                             </span>
                         </td>
                     </tr>
@@ -156,7 +165,8 @@
                     <tr>
                         <td><span class="text-wrapper-5">Last Call Date:</span></td>
                         <td>
-                            <span class="text-wrapper-4" id="c-last"> 03/10/2023</span>
+                            <span class="text-wrapper-4" id="c-last"> @Html.DisplayNameFor(model =>
+                                model.lastCallDate)</span>
                         </td>
                     </tr>
                 </table>
@@ -165,25 +175,11 @@
             <div class="text-wrapper-14">Notes:</div>
             <div class="overlap-7">
                 <table id="notes">
-                    <tr>
-                        <td>
-                            Client has been very difficult with pronunciation of her name.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Client asked for a female call center agent to be her contact
-                            point from the next call.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Client has a history of calling after hours.</td>
-                    </tr>
+                    @Html.DisplayNameFor(model => model.clientNotes)
                 </table>
             </div>
         </div>
     </div>
-    <button type="button" onclick="openModal()">Generate Work Request (Express)</button>
 
     <!-- modal form for generating express work requests -->
     <div id="modalForm" style="display:none;">
@@ -282,6 +278,31 @@
                             });
                         });
                 };
+                // Function to update the timer
+                function updateTimer() {
+                    let currentTime = new Date();
+                    let hours = currentTime.getHours();
+                    let minutes = currentTime.getMinutes();
+                    let seconds = currentTime.getSeconds();
+
+                    // Add leading zeros if the values are less than 10
+                    minutes = (minutes < 10 ? '0' : '') + minutes;
+                    seconds = (seconds < 10 ? '0' : '') + seconds;
+
+                    let formattedTime = hours + ':' + minutes + ':' + seconds;
+                    document.getElementById('timer').innerText = formattedTime;
+                }
+
+                // Function to start the timer
+                function startTimer() {
+                    intervalId = setInterval(updateTimer, 1000); // Update the timer every second
+                }
+
+                // Function to stop the timer
+                function stopTimer() {
+                    clearInterval(intervalId); // Stop the timer interval
+                }
             </script>
 </body>
+
 </html>

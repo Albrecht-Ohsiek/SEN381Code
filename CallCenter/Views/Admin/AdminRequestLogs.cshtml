@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<CallCenter.Models.requestLogs>;
+
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Admin Logs</title>
 </head>
+
 <body>
     @Html.Partial("~/Views/Shared/Header.cshtml")
 
@@ -42,46 +46,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>45</td>
-                            <td>Bob Ross</td>
-                            <td>8 Aug 2023</td>
-                            <td>3:15 min</td>
-                            <td>R14</td>
-                            <td>High</td>
-                            <td>Completed</td>
-                            <td>John Doe</td>
-                        </tr>
-                        <tr>
-                            <td>25</td>
-                            <td>Cameron Man</td>
-                            <td>8 Aug 2023</td>
-                            <td>2:15 min</td>
-                            <td>R16</td>
-                            <td>Medium</td>
-                            <td>In Progress</td>
-                            <td>John Doe</td>
-                        </tr>
-                        <tr>
-                            <td>77</td>
-                            <td>Cinnamon Vei</td>
-                            <td>8 Aug 2023</td>
-                            <td>4:15 min</td>
-                            <td>R7</td>
-                            <td>Low</td>
-                            <td>In Progress</td>
-                            <td>John Doe</td>
-                        </tr>
-                        <tr>
-                            <td>87</td>
-                            <td>Happy Sad</td>
-                            <td>8 Aug 2023</td>
-                            <td>3:35 min</td>
-                            <td>R17</td>
-                            <td>High</td>
-                            <td>Withdrawn</td>
-                            <td>John Doe</td>
-                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.requestId)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.technician)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.clientName)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.callDuration)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.status)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.lastCall)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.priority)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.clientId)</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -90,7 +81,9 @@
             <div class="group-9">
                 <div class="text-wrapper-35">Search:</div>
                 <div class="rectangle-2"></div>
-                <div class="overlap-6"><div class="text-wrapper-36">Search</div></div>
+                <div class="overlap-6">
+                    <div class="text-wrapper-36">Search</div>
+                </div>
             </div>
             <img class="line-3" src="img/line-16.svg" />
         </div>
@@ -110,5 +103,5 @@
         });
     </script>
 </body>
-</body>
+
 </html>
