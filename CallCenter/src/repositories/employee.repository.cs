@@ -48,10 +48,7 @@ namespace CallCenter.Repository
                             }
                             else
                             {
-                                // Log or handle the situation where the enum value is not found
-                                // You might want to provide a default value or raise an exception
-                                // depending on your application's requirements.
-                                // Example: employee.department = Department.Default;
+                                employee.department = Department.Undefined;
                             }
 
                             employees.Add(employee);

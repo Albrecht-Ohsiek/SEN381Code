@@ -11,6 +11,9 @@ namespace CallCenter.Types
         CustomerService,
 
         [Display(Name = "Technical Support")]
-        TechnicalSupport
+        TechnicalSupport,
+
+        [Display(Name = "Undefined")]
+        Undefined
     }
 }
