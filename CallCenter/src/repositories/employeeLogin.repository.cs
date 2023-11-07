@@ -85,7 +85,7 @@ namespace CallCenter.Repository
             };
 
             List<Login> employeeLogins = await ExecuteEmployeeLoginQueryAsync("selectEmployeLoginByName", parameters);
-            return employeeLogins.First();
+            return employeeLogins.FirstOrDefault();
         }
     }
 }

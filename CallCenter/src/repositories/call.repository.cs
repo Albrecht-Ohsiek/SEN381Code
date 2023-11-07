@@ -100,7 +100,7 @@ namespace CallCenter.Repository
 
             List<Call> calls = await ExecuteCallQueryAsync("selectCallsById", parameters);
 
-            return calls.First();
+            return calls.FirstOrDefault();
         }
 
         public async Task<List<Call>> SelectCallsByClientId(Guid clientId)

@@ -116,7 +116,7 @@ namespace CallCenter.Repository
             };
 
             List<Contract> contracts = await ExecuteContractQueryAsync("selectContractById", parameters);
-            return contracts.First();
+            return contracts.FirstOrDefault();
         }
 
         public async Task<List<Contract>> GetContractByClientId(Guid clientId)
