@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<CallCenter.Models.Client>
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Admin";
 }
@@ -109,20 +110,51 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Name</th>
-                        <th>ID</th>
-                        <th>Contact</th>
+                        <th>@Html.DisplayNameFor(model => model.clientName)</th>
+                        <th>@Html.DisplayNameFor(model => model.clientId)</th>
+                        <th>@Html.DisplayNameFor(model => model.contracts)</th>
+                        <th>@Html.DisplayNameFor(model => model.clientType)</th>
+                        <th>@Html.DisplayNameFor(model => model.clientAddress)</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><img src="" alt="" /></td>
-                        <td>Names</td>
-                        <td>54</td>
-                        <td>054 874 9512</td>
-                        <td><button>View Details</button></td>
-                    </tr>
+                    @if (Model != null)
+
+                    {
+                        @foreach (var item in Model)
+
+                        {
+                            <tr>
+                                <td>img</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.clientName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.clientId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.contracts)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.clientType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.clientAddress)
+                                </td>
+                                <td>
+                                    <a href="/ClientMaintenance/ClientEdit/{@item.clientId}">Edit</a> |
+                                    <a href="/ClientMaintenance/ClientDetails/{@item.clientId}">Details</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                    else
+
+                    {
+                        <p>No data available.</p>
+                    }
                 </tbody>
             </table>
         </div>

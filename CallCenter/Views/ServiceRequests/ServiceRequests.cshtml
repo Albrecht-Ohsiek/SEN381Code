@@ -1,14 +1,17 @@
-﻿@{
+﻿@model IEnumerable<CallCenter.Models.WorkRequest>
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Admin";
 }
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>Service Requests</title>
 </head>
+
 <body>
     <div class="sr">
         <div class="div">
@@ -47,85 +50,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Populate this section dynamically with your data -->
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>231</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+                        @if (Model != null)
+
+                        {
+                            @foreach (var item in Model)
+
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.priority)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.requestId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.clientId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.status)
+                                    </td>
+                                    <td id="priorityCell">
+                                        @Html.DisplayFor(modelItem => item.priority)
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                        else
+
+                        {
+                            <p>No data available.</p>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -197,6 +152,32 @@
                 this.classList.add("selected");
             });
         }
+        document.addEventListener('DOMContentLoaded', function () {
+            var table = document.getElementById("data-table");
+            var rows = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                var priorityCell = rows[i].getElementsByTagName("td")[0]; // Assuming the priority cell is the first cell
+
+                var priority = priorityCell.innerText.toLowerCase().trim();
+
+                switch (priority) {
+                    case 'high':
+                        priorityCell.style.color = 'red';
+                        break;
+                    case 'medium':
+                        priorityCell.style.color = 'orange';
+                        break;
+                    case 'low':
+                        priorityCell.style.color = 'yellow';
+                        break;
+                    default:
+                        priorityCell.style.color = 'white';
+                }
+            }
+        });
+        });
     </script>
 </body>
+
 </html>

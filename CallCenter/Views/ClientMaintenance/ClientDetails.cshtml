@@ -1,0 +1,43 @@
+@model CallCenter.Models.Client
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.clientId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.clientId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.clientName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.clientName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.phoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.phoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.clientAddress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.clientAddress)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a href="ClientMaintenance/ClientMaintenance/@Model.clientId">Edit</a> |
+    <a href="ClientMaintenance/ClientMaintenance">Back to List</a>
+</div>

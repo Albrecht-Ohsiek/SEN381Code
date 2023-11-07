@@ -2,46 +2,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Admin";
 }
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>CallCenter</title>
     <style>
         /* Style for the form container */
         #modalForm {
             display: none;
-            max-width: 300px; /* Adjust the width as needed */
+            max-width: 300px;
+            /* Adjust the width as needed */
             margin: 20px;
         }
 
         /* Style for labels */
         label {
-            display: block; /* Make labels appear on a new line */
-            margin-top: 10px; /* Add some margin above each label */
+            display: block;
+            /* Make labels appear on a new line */
+            margin-top: 10px;
+            /* Add some margin above each label */
             font-weight: bold;
         }
 
         /* Style for inputs */
         input[type="text"],
         select {
-            width: 100%; /* Make inputs expand to fill the container width */
+            width: 100%;
+            /* Make inputs expand to fill the container width */
             padding: 5px;
-            margin-top: 5px; /* Add some margin above each input */
-            border: 1px solid #ccc; /* Add a simple border */
-            border-radius: 5px; /* Add rounded corners */
+            margin-top: 5px;
+            /* Add some margin above each input */
+            border: 1px solid #ccc;
+            /* Add a simple border */
+            border-radius: 5px;
+            /* Add rounded corners */
         }
 
         /* Style for checkboxes and their labels container */
         .checkbox-container {
-            display: flex; /* Display checkboxes and labels next to each other */
-            align-items: center; /* Center vertically */
+            display: flex;
+            /* Display checkboxes and labels next to each other */
+            align-items: center;
+            /* Center vertically */
         }
 
         /* Style for checkboxes */
         input[type="checkbox"] {
-            margin-right: 5px; /* Add some space between the checkbox and label */
+            margin-right: 5px;
+            /* Add some space between the checkbox and label */
         }
 
         /* Style for submit and close buttons */
@@ -55,9 +59,666 @@
             cursor: pointer;
         }
 
+        .call-centre {
+            position: absolute;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            top: 250px;
+            left: 0%;
+        }
+
+        .call-centre .phone-calls {
+            position: relative;
+            width: 650px;
+            height: 800px;
+            background-color: #d6ebff;
+            border-radius: 25px;
+        }
+
+        .call-centre .calls {
+            position: relative;
+            top: 10%;
+            text-align: center;
+        }
+
+        .call-centre .caller-details {
+            position: relative;
+            left: 20%;
+            display: flex;
+            flex-direction: column;
+            top: 13%;
+        }
+
+        .call-centre .button {
+            background-color: #00376b;
+            color: #ffffff;
+            border-radius: 10px;
+        }
+
+        .call-centre #WR,
+        #ER {
+            font-size: large;
+            width: 60%;
+            padding: 1%;
+        }
+
+        .call-centre #answer,
+        #end {
+            font-size: large;
+            padding: 1%;
+        }
+
+        .call-centre .text-wrapper-4 {
+            font-family: "Inter-Bold", Helvetica;
+            font-weight: 700;
+        }
+
+        .call-centre .text-wrapper-5 {
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: 15px;
+        }
+
+        .call-centre .heading {
+            position: absolute;
+            top: 21px;
+            left: 194px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 26px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .priority-level {
+            position: relative;
+            top: 35%;
+            left: 24%;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .call-centre .dropdown {
+            margin-left: 2%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 1%;
+        }
+
+        .call-centre .history {
+            position: relative;
+            width: 60%;
+            height: 135px;
+            top: 20%;
+            left: 20%;
+            background-color: #c1fafc80;
+            border-radius: 5px;
+            border: 3px solid;
+            border-color: #00324940;
+            overflow-y: scroll;
+        }
+
+        .history table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .history tr {
+            border-bottom: 1px solid #007fb180;
+        }
+
+        .history h3 {
+            margin: 0;
+            text-decoration: underline;
+        }
+
+        .call-centre .funcs {
+            position: relative;
+            top: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* other part*/
+        .call-centre .client-details {
+            position: relative;
+            width: 650px;
+            height: 734px;
+            margin-left: 10%;
+            background-color: #d6ebff;
+            border-radius: 25px;
+        }
+
+        .call-centre .default {
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+        }
+
+        .call-centre .overlap-6 {
+            position: absolute;
+            width: 364px;
+            height: 35px;
+            top: 678px;
+            left: 142px;
+            border-radius: 14px;
+        }
+
+        .call-centre .rectangle-2 {
+            position: absolute;
+            width: 364px;
+            height: 35px;
+            top: 0;
+            left: 0;
+            background-color: #00376b;
+            border-radius: 14px;
+        }
+
+        .call-centre #Search {
+            width: 20%;
+            height: 30px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            font-size: larger;
+            text-align: center;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .client-details .search {
+            position: relative;
+            top: 10%;
+            left: 15%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .client-details .client {
+            position: relative;
+            top: 15%;
+            left: 15%;
+        }
+
+        .client-details td {
+            text-align: left;
+        }
+
+        .client-details #notes {
+            left: 10% !important;
+            width: 90%;
+        }
+
+        .client-details #notes td {
+            position: relative;
+            text-align: left;
+            font-size: large;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: 15px;
+            border-collapse: separate;
+            border-radius: 10px;
+            border-spacing: 100px;
+        }
+
+        .client-details #notes tr:nth-child(even) {
+            background-color: #f2f2f2;
+            /* Change background color for even rows */
+        }
+
+        .call-centre .text-wrapper-10 {
+            position: absolute;
+            top: 9px;
+            left: 57px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .text-wrapper-11 {
+            position: absolute;
+            top: 83px;
+            left: 77px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .text-wrapper-12 {
+            position: absolute;
+            height: 15px;
+            top: 29px;
+            left: 230px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 26px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .img {
+            width: 436px;
+            top: 56px;
+            left: 94px;
+            position: absolute;
+            height: 2px;
+            object-fit: cover;
+        }
+
+        .call-centre .search-bar {
+            width: 279px;
+            height: 41px;
+            background-color: #ffffff;
+            border-radius: 14px;
+        }
+
+        .call-centre .overlap-group-2 {
+            position: absolute;
+            width: 120px;
+            height: 35px;
+            top: 75px;
+            left: 469px;
+            background-color: #00376b;
+            border-radius: 14px;
+        }
+
+        .call-centre .text-wrapper-13 {
+            position: absolute;
+            top: 10px;
+            left: 30px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .text-wrapper-14 {
+            position: absolute;
+            top: 317px;
+            left: 75px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .overlap-7 {
+            position: absolute;
+            width: 487px;
+            height: 296px;
+            top: 352px;
+            left: 10%;
+            background-color: #ffffff;
+            border-radius: 25px;
+        }
+
+        .call-centre .text-wrapper-15 {
+            position: absolute;
+            width: 430px;
+            top: 28px;
+            left: 20px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: 20px;
+        }
+
+        .call-centre .text-wrapper-16 {
+            position: absolute;
+            width: 430px;
+            top: 93px;
+            left: 20px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: 20px;
+        }
+
+        .call-centre .text-wrapper-17 {
+            position: absolute;
+            top: 158px;
+            left: 20px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: 20px;
+            white-space: nowrap;
+        }
+
+        .call-centre .group-2 {
+            position: absolute;
+            width: 1629px;
+            height: 246px;
+            top: 0;
+            left: 0;
+        }
+
+        .call-centre .overlap-8 {
+            position: relative;
+            width: 1625px;
+            height: 246px;
+            background-color: #0065c2;
+        }
+
+        .call-centre .overlap-9 {
+            position: absolute;
+            width: 141px;
+            height: 49px;
+            top: 84px;
+            left: 1340px;
+            background-color: #00376b;
+            border-radius: 14px;
+        }
+
+        .call-centre .text-wrapper-18 {
+            position: absolute;
+            top: 17px;
+            left: 27px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #ffffff;
+            font-size: 26px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .group-3 {
+            position: absolute;
+            width: 462px;
+            height: 172px;
+            top: 16px;
+            left: 824px;
+        }
+
+        .call-centre .overlap-group-3 {
+            position: relative;
+            width: 454px;
+            height: 172px;
+            background-color: #238def;
+            border-radius: 25px;
+            border-bottom-width: 3px;
+            border-bottom-style: solid;
+            border-color: #00000080;
+            box-shadow: 0px 4px 4px #00000040;
+        }
+
+        .call-centre .text-wrapper-19 {
+            position: absolute;
+            top: 31px;
+            left: 136px;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 26px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .line-2 {
+            width: 436px;
+            top: 54px;
+            left: -3px;
+            position: absolute;
+            height: 2px;
+            object-fit: cover;
+        }
+
+        .call-centre .text-wrapper-20 {
+            position: absolute;
+            top: 71px;
+            left: 19px;
+            font-family: "Inter-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .text-wrapper-21 {
+            position: absolute;
+            top: 99px;
+            left: 19px;
+            font-family: "Inter-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .text-wrapper-22 {
+            position: absolute;
+            top: 126px;
+            left: 19px;
+            font-family: "Inter-Bold", Helvetica;
+            font-weight: 700;
+            color: #000000;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            white-space: nowrap;
+        }
+
+        .call-centre .ellipse-wrapper {
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            top: 23px;
+            left: 165px;
+            display: inline-flex;
+            position: absolute;
+        }
+
+        .call-centre .ellipse {
+            position: relative;
+            width: 133px;
+            height: 133px;
+            margin-bottom: -8px;
+            margin-right: -8px;
+            object-fit: cover;
+        }
+
+        .call-centre .hover {
+            display: flex;
+            width: 142px;
+            height: 58px;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            position: absolute;
+            top: 188px;
+            left: 285px;
+            background-color: #238def;
+            box-shadow: 0px -4px 4px #0000001a;
+        }
+
+        .call-centre .text-wrapper-23 {
+            position: relative;
+            width: fit-content;
+            opacity: 0.5;
+            font-family: "Inter-Regular", Helvetica;
+            font-weight: 400;
+            color: #000000;
+            font-size: 20px;
+            letter-spacing: 0;
+            line-height: normal;
+            white-space: nowrap;
+        }
+
+        .call-centre .hover-2 {
+            left: 427px;
+            display: flex;
+            width: 142px;
+            height: 58px;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            position: absolute;
+            top: 188px;
+            background-color: #238def;
+            box-shadow: 0px -4px 4px #0000001a;
+        }
+
+        .call-centre .hover-3 {
+            left: 569px;
+            border-radius: 0px 15px 0px 0px;
+            display: flex;
+            width: 142px;
+            height: 58px;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            position: absolute;
+            top: 188px;
+            background-color: #238def;
+            box-shadow: 0px -4px 4px #0000001a;
+        }
+
+        .call-centre .overlap-10 {
+            position: absolute;
+            width: 142px;
+            height: 58px;
+            top: 188px;
+            left: 143px;
+            background-color: #00376b;
+            border-radius: 15px 0px 0px 0px;
+            box-shadow: 0px -4px 4px #00000040;
+        }
+
+        .call-centre .text-wrapper-24 {
+            position: absolute;
+            top: 22px;
+            left: 51px;
+            font-family: "Inter-Bold", Helvetica;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0;
+            line-height: 15px;
+            text-decoration: underline;
+            white-space: nowrap;
+        }
+
+        /* Style for the form container */
+        #modalForm {
+            display: none;
+            max-width: 300px;
+            /* Adjust the width as needed */
+            margin: 20px;
+        }
+
+        /* Style for labels */
+        label {
+            display: block;
+            /* Make labels appear on a new line */
+            margin-top: 10px;
+            /* Add some margin above each label */
+            font-weight: bold;
+        }
+
+        /* Style for inputs */
+        input[type="text"],
+        select {
+            width: 100%;
+            /* Make inputs expand to fill the container width */
+            padding: 5px;
+            margin-top: 5px;
+            /* Add some margin above each input */
+            border: 1px solid #ccc;
+            /* Add a simple border */
+            border-radius: 5px;
+            /* Add rounded corners */
+        }
+
+        /* Style for checkboxes and their labels container */
+        .checkbox-container {
+            display: flex;
+            /* Display checkboxes and labels next to each other */
+            align-items: center;
+            /* Center vertically */
+        }
+
+        /* Style for checkboxes */
+        input[type="checkbox"] {
+            margin-right: 5px;
+            /* Add some space between the checkbox and label */
+        }
+
+        /* Style for submit and close buttons */
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
-</head>
-<body>
+    
     <div class="call-centre">
         <div class="phone-calls">
             <div class="heading">Phone Calls</div>
@@ -283,5 +944,3 @@
                         });
                 };
             </script>
-</body>
-</html>
