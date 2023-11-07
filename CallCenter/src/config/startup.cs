@@ -1,5 +1,6 @@
 using CallCenter.Repository;
 using CallCenter.Services;
+using CallCenter.Types;
 
 namespace CallCenter.Config
 {
@@ -26,7 +27,7 @@ namespace CallCenter.Config
             services.AddSingleton<DatabaseServices>();
             services.AddSingleton<LoginServices>();
 
-            services.AddTransient<CallRepository>();
+            services.AddTransient<ICallRepository, CallRepository>();
             services.AddTransient<CallReportRepository>();
             services.AddTransient<ClientRepository>();
             services.AddTransient<ContractRepository>();

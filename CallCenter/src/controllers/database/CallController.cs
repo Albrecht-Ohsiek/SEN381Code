@@ -1,6 +1,7 @@
 using CallCenter.Models;
 using CallCenter.Models.Responses;
 using CallCenter.Repository;
+using CallCenter.Types;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CallCenter.Controllers
@@ -9,9 +10,9 @@ namespace CallCenter.Controllers
     [Route("/api/call")]
     public class CallController : ControllerBase
     {
-        private readonly CallRepository _callRepository;
+        private readonly ICallRepository _callRepository;
 
-        public CallController(CallRepository callRepository)
+        public CallController(ICallRepository callRepository)
         {
             _callRepository = callRepository;
         }

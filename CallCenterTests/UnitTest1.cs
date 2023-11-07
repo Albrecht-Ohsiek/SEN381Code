@@ -1,5 +1,6 @@
 using CallCenter.Controllers;
 using CallCenter.Models;
+using CallCenter.Types;
 using CallCenter.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -10,27 +11,34 @@ using Xunit;
 
 public class CallControllerTests
 {
+     private readonly ICallRepository _callRepository;
+
+     public CallControllerTests(ICallRepository callRepository){
+         _callRepository = callRepository;
+    }
+
     [Fact]
     public async Task AddCall_ValidModel_ReturnsOkResult()
-    {
+    { 
         // Arrange
-        var callRepositoryMock = new Mock<CallRepository>(MockBehavior.Loose);
+        Mock<ICallRepository> callRepositoryMock = new Mock<ICallRepository>();
+        CallController controller = new CallController(callRepositoryMock.Object);
 
-        var controller = new CallController(callRepositoryMock.Object);
-        var addCallRequest = new AddCallRequest
-        {
+        AddCallRequest addCallRequest = new AddCallRequest{
             ClientId = Guid.NewGuid(),
+            StartTime = DateTime.Now,
             EmployeeId = Guid.NewGuid(),
             WorkId = Guid.NewGuid()
         };
 
+        callRepositoryMock.Setup(repo => repo.AddCall(It.IsAny<Call>())).Returns(Task.CompletedTask);
+
         // Act
-        var result = await controller.AddCall(addCallRequest);
+        var result = controller.AddCall(addCallRequest);
 
         // Assert
-        Assert.IsType<OkResult>(result);
-        callRepositoryMock.Verify(mock => mock.AddCall(It.IsAny<Call>()), Times.Once);
-    }
+        callRepositoryMock.Verify(repo => repo.AddCall(It.IsAny<Call>()), Times.Once);
 
-    // Similar tests for other endpoints like UpdateCall, GetCallByCallId, GetCallByCallClientId, GetCallByCallWorkId
+        Assert.IsType<OkResult>(result);
+    }
 }
