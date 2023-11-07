@@ -49,6 +49,10 @@ namespace CallCenter.Controllers
             }
 
             Client existingClient = await _clientRepository.GetClientById(client.clientId);
+            if (existingClient == null)
+            {
+                return NotFound();
+            }
 
             Client newClient = new Client()
             {
@@ -110,7 +114,7 @@ namespace CallCenter.Controllers
         public async Task<IActionResult> GetClientByPhoneNumber([FromRoute] string phoneNumber)
         {
             Client client = await _clientRepository.GetClientByPhoneNumber(phoneNumber);
-            if (client != null)
+            if (client == null)
             {
                 return NotFound();
             }

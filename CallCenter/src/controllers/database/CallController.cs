@@ -47,6 +47,10 @@ namespace CallCenter.Controllers
             }
 
             Call existingCall = await _callRepository.SelectCallsById(call.CallId);
+            if (existingCall == null)
+            {
+                return NotFound();
+            }
 
             Call newCall = new Call()
             {

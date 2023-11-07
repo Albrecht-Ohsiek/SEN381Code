@@ -47,6 +47,10 @@ namespace CallCenter.Controllers
             }
 
             Contract existingContract = await _contractRepository.GetContractById(contract.contractId);
+            if (existingContract == null)
+            {
+                return NotFound();
+            }
 
             Contract newContract = new Contract()
             {
@@ -113,7 +117,7 @@ namespace CallCenter.Controllers
         public async Task<IActionResult> GetContractByServiceLevel([FromRoute] int serviceLevel)
         {
             List<Contract> contracts = await _contractRepository.GetContractByServiceLevel(serviceLevel);
-            if (contracts != null)
+            if (contracts == null)
             {
                 return NotFound();
             }

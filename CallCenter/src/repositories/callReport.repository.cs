@@ -87,7 +87,7 @@ namespace CallCenter.Repository
             };
 
             List<CallReport> callReports = await ExecuteCallReportQueryAsync("getAllCallReportsById", parameters);
-            return callReports.First();
+            return callReports.FirstOrDefault();
         }
 
         public async Task<List<CallReport>> GetCallReportsByWorkId(Guid workId)

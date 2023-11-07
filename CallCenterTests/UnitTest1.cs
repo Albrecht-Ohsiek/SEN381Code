@@ -49,13 +49,4 @@ public class CallControllerTests
         Assert.IsType<OkResult>(result);
     }
 
-    [Fact]
-    public async Task Test2()
-    {
-        var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString());
-        var context = new ApplicationContext(optionsBuilder.Options);
-
-        var repository = new CallRepository(context);
-    }
 }

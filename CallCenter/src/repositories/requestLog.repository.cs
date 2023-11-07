@@ -103,7 +103,7 @@ namespace CallCenter.Repository
             };
 
             List<RequestLog> requestLogs = await ExecuteRequestLogQueryAsync("selectRequestLogById", parameters);
-            return requestLogs.First();
+            return requestLogs.FirstOrDefault();
         }
 
         public async Task<List<RequestLog>> GetRequestLogByClientId(Guid clientId)

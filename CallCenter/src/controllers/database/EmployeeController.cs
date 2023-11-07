@@ -46,10 +46,14 @@ namespace CallCenter.Controllers
             }
 
             Employee existingEmployee = await _employeeRepository.GetEmployeeById(employee.employeeId);
+            if (existingEmployee == null)
+            {
+                return NotFound();
+            }
 
             Employee newEmployee = new Employee()
             {
-                employeeId = Guid.NewGuid(),
+                employeeId = existingEmployee.employeeId,
                 employeeName = employee.employeeName ?? existingEmployee.employeeName,
                 department = employee.department ?? existingEmployee.department,
                 emailAddress = employee.emailAddress ?? existingEmployee.emailAddress,
@@ -93,7 +97,7 @@ namespace CallCenter.Controllers
         public async Task<IActionResult> GetEmployeeByClientId([FromRoute] string employeeName)
         {
                 Employee employee = await _employeeRepository.GetEmployeeByName(employeeName);
-                if (employee != null)
+                if (employee == null)
                 {
                     return NotFound();
                 }
@@ -104,7 +108,7 @@ namespace CallCenter.Controllers
         public async Task<IActionResult> GetEmployeeByStatus([FromRoute] string phoneNumber)
         {
                 Employee employee = await _employeeRepository.GetEmployeeByPhoneNumber(phoneNumber);
-                if (employee != null)
+                if (employee == null)
                 {
                     return NotFound();
                 }
