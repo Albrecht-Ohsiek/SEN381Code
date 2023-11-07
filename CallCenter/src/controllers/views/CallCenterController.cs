@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using CallCenter.Services;
 using CallCenter.Models;
@@ -10,11 +11,11 @@ namespace CallCenter.Controllers
     [Route("/CallCenter")]
     public class CallCenterController : Controller
     {
-        private readonly ClientRepository _clientRepository;
-        private readonly CallRepository _callRepository;
+        private readonly IClientRepository _clientRepository;
+        private readonly ICallRepository _callRepository;
         private readonly DatabaseServices _dbService;
 
-        public CallCenterController(DatabaseServices dbService, CallRepository callRepository, ClientRepository clientRepository)
+        public CallCenterController(DatabaseServices dbService, ICallRepository callRepository, IClientRepository clientRepository)
         {
             _callRepository = callRepository;
             _dbService = dbService;

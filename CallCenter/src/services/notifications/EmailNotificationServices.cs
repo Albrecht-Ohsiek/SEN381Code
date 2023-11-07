@@ -7,7 +7,7 @@ namespace CallCenter.Services
     //implements email notification services using SendGrid API
     public class EmailNotificationServices : INotificationStrategy
     {
-        private readonly string sendGridApiKey = "paste here";
+        private readonly string sendGridApiKey = "SG.ZEPfT-X5QRGA4@A-fgLlGUg.6QwWTVbyC-yXFfu3N-7TD3_Fh@gOtZn1RrpNepZm8Suk";
         private readonly EmailAddress fromEmail = new EmailAddress("ruludick+sen381@gmail.com", "Premier Service Solutions");
 
         public void Notify(string message, string recipientEmail)
@@ -22,3 +22,4 @@ namespace CallCenter.Services
         }
     }
 }
+ 

@@ -1,6 +1,6 @@
 using CallCenter.Types;
 
-namespace CallCenter.Models.Responses{
+namespace CallCenter.Models{
     public class HydratedRequestLogResponse{
         public Guid requestId { get; set; }
         public required string clientName { get; set; }
