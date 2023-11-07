@@ -22,7 +22,7 @@ namespace CallCenter.Controllers
         }
 
         [HttpGet]
-        public IActionResult CallCenter()
+        public async Task<IActionResult> CallCenter()
         {
             return View();
         }
