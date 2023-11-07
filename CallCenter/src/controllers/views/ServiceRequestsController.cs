@@ -5,9 +5,9 @@ namespace CallCenter.src.controllers
 {
     public class ServiceRequestsController : Controller
     {
-        private readonly WorkRequestRepository _workRequestRepository;
+        private readonly IWorkRequestRepository _workRequestRepository;
 
-        public ServiceRequestsController(WorkRequestRepository workRequestRepository)
+        public ServiceRequestsController(IWorkRequestRepository workRequestRepository)
         {
             _workRequestRepository = workRequestRepository;
         }
