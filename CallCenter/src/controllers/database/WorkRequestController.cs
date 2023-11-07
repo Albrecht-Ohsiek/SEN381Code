@@ -111,7 +111,7 @@ namespace CallCenter.Controllers
         public async Task<IActionResult> GetWorkRequestByPriority([FromRoute] string priority)
         {
             List<WorkRequest> workRequest = await _workRequestRepository.GetWorkRequestByPriority(priority);
-            if (workRequest != null)
+            if (workRequest == null)
             {
                 return NotFound();
             }
@@ -122,7 +122,7 @@ namespace CallCenter.Controllers
         public async Task<IActionResult> GetWorkRequestByServiceType([FromRoute] string serviceType)
         {
             List<WorkRequest> workRequest = await _workRequestRepository.GetWorkRequestByServiceType(serviceType);
-            if (workRequest != null)
+            if (workRequest == null)
             {
                 return NotFound();
             }
@@ -133,7 +133,7 @@ namespace CallCenter.Controllers
         public async Task<IActionResult> GetWorkRequestByStatus([FromRoute] string status)
         {
             List<WorkRequest> workRequest = await _workRequestRepository.GetWorkRequestByStatus(status);
-            if (workRequest != null)
+            if (workRequest == null)
             {
                 return NotFound();
             }

@@ -111,7 +111,7 @@ namespace CallCenter.Repository
             };
 
             List<Client> clients = await ExecuteClientQueryAsync("selectClientById", parameters);
-            return clients.First();
+            return clients.FirstOrDefault();
         }
 
         public async Task<List<Client>> GetClientByName(string clientName)
@@ -132,7 +132,7 @@ namespace CallCenter.Repository
             };
 
             List<Client> clients = await ExecuteClientQueryAsync("selectClientByPhone", parameters);
-            return clients.First();
+            return clients.FirstOrDefault();
         }
 
     }

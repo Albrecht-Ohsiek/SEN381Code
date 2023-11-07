@@ -113,7 +113,7 @@ namespace CallCenter.Controllers
         public async Task<IActionResult> GetContractByServiceLevel([FromRoute] int serviceLevel)
         {
             List<Contract> contracts = await _contractRepository.GetContractByServiceLevel(serviceLevel);
-            if (contracts != null)
+            if (contracts == null)
             {
                 return NotFound();
             }

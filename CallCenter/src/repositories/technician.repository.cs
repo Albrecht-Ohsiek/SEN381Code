@@ -99,7 +99,7 @@ namespace CallCenter.Repository
             };
 
             List<Technician> technicians = await ExecuteTechnicianQueryAsync("selectTechnicianById", parameters);
-            return technicians.First();
+            return technicians.FirstOrDefault();
         }
 
         public async Task<Technician> GetTechnicianByEmployeeId(Guid employeeId)
@@ -110,7 +110,7 @@ namespace CallCenter.Repository
             };
 
             List<Technician> technicians = await ExecuteTechnicianQueryAsync("selectTechnicianByEmployeeId", parameters);
-            return technicians.First();
+            return technicians.FirstOrDefault();
         }
 
         public async Task<List<Technician>> GetTechnicianBySkillLevel(int skillLevel)

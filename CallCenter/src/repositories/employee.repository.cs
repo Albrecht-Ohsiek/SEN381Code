@@ -106,7 +106,7 @@ namespace CallCenter.Repository
             };
 
             List<Employee> employees = await ExecuteEmployeeQueryAsync("selectEmployeeById", parameters);
-            return employees.First();
+            return employees.FirstOrDefault();
         }
 
         public async Task<Employee> GetEmployeeByName(string employeeName)
@@ -117,7 +117,7 @@ namespace CallCenter.Repository
             };
 
             List<Employee> employees = await ExecuteEmployeeQueryAsync("selectEmployeeByName", parameters);
-            return employees.First();
+            return employees.FirstOrDefault();
         }
 
         public async Task<Employee> GetEmployeeByPhoneNumber(string phoneNumber)
@@ -128,7 +128,7 @@ namespace CallCenter.Repository
             };
 
             List<Employee> employees = await ExecuteEmployeeQueryAsync("selectClientByPhone", parameters);
-            return employees.First();
+            return employees.FirstOrDefault();
         }
 
     }

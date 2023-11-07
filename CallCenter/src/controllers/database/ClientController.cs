@@ -110,7 +110,7 @@ namespace CallCenter.Controllers
         public async Task<IActionResult> GetClientByPhoneNumber([FromRoute] string phoneNumber)
         {
             Client client = await _clientRepository.GetClientByPhoneNumber(phoneNumber);
-            if (client != null)
+            if (client == null)
             {
                 return NotFound();
             }

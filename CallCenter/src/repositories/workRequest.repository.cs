@@ -96,7 +96,7 @@ namespace CallCenter.Repository
             };
 
             List<WorkRequest> workRequests = await ExecuteWorkRequestQueryAsync("selectWorkRequestById", parameters);
-            return workRequests.First();
+            return workRequests.FirstOrDefault();
         }
 
         public async Task<List<WorkRequest>> GetWorkRequestByClientId(Guid clientId)
