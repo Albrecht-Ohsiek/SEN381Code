@@ -6,15 +6,17 @@ namespace CallCenter.src.controllers
 {
     public class AdminController : Controller
     {
-        private readonly RequestLogRepository _requestLogRepository;
-        private readonly EmployeeRepository _employeeRepository;
-        private readonly TechnicianRepository _technicianRepository;
+        private readonly IRequestLogRepository _requestLogRepository;
+        private readonly IEmployeeRepository _employeeRepository;
+        private readonly ITechnicianRepository _technicianRepository;
+        private readonly IClientRepository _clientRepository;
 
-        public AdminController(RequestLogRepository requestLogRepository, TechnicianRepository technicianRepository, EmployeeRepository employeeRepository, ClientRepository clientRepository)
+        public AdminController(IRequestLogRepository requestLogRepository, ITechnicianRepository technicianRepository, IEmployeeRepository employeeRepository, IClientRepository clientRepository)
         {
             _requestLogRepository = requestLogRepository;
             _technicianRepository = technicianRepository;
             _employeeRepository = employeeRepository;
+            _clientRepository = clientRepository;
         }
 
         
