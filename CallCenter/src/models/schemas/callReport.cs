@@ -5,7 +5,7 @@ namespace CallCenter.Models{
     {
         public Guid callReportId {get; set;}
         public Guid workId { get ; set ; }
-        public List<Call> calls { get ; set ; }
+        public List<Call>? calls { get ; set ; }
     
         public CallReport()
         {

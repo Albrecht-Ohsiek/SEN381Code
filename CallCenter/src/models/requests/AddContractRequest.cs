@@ -6,7 +6,7 @@ namespace CallCenter.Models
     {
         public Guid clientId { get; set; }
         public ContractType contractType { get; set; }
-        public string contractDetails { get; set; }
+        public required string contractDetails { get; set; }
         public int serviceLevel { get; set; }
         public ContractStatus contractStatus { get; set; }
     }

@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 public class CallControllerTests
 {
@@ -34,11 +36,17 @@ public class CallControllerTests
         callRepositoryMock.Setup(repo => repo.AddCall(It.IsAny<Call>())).Returns(Task.CompletedTask);
 
         // Act
-        var result = controller.AddCall(addCallRequest);
+        var result = await controller.AddCall(addCallRequest);
 
         // Assert
         callRepositoryMock.Verify(repo => repo.AddCall(It.IsAny<Call>()), Times.Once);
 
         Assert.IsType<OkResult>(result);
+    }
+
+    [Fact]
+    public async Task Test2()
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>
     }
 }

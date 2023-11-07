@@ -8,8 +8,8 @@ namespace CallCenter.Models
         public Guid employeeId {get; set;}
         public int skillLevel {get; set;}
         public bool availability { get; set; }
-        public string serviceArea { get; set; }
-        public string certificationLevel { get; set; }
+        public required string serviceArea { get; set; }
+        public required string certificationLevel { get; set; }
     
         public Technician()
         {

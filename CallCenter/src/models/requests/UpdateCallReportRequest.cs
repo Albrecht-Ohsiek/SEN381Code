@@ -3,6 +3,6 @@ namespace CallCenter.Models
     public class UpdateCallReportRequest
     {
         public Guid callReportId {get; set;}
-        public List<Call> calls { get; set; }
+        public required List<Call> calls { get; set; }
     }
 }

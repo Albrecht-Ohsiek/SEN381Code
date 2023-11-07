@@ -22,10 +22,11 @@ namespace CallCenter.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> CallCenter()
+        public IActionResult CallCenter()
         {
             return View();
         }
+
         //display technicians in dropdown menu of express work request form
         [HttpGet("GetTechnicians")]
         public IActionResult GetTechnicians()
@@ -43,6 +44,8 @@ namespace CallCenter.Controllers
                             // Populate the technicians list with data from the database
                             var technician = new Technician
                             {
+                                serviceArea = "null",
+                                certificationLevel = "null"
                                 // Map database columns to the properties of your Technician model
                                 // Example: technician.Id = reader.GetInt32(reader.GetOrdinal("Id"));
                             };

@@ -1,5 +1,5 @@
 namespace CallCenter.Config{
     public class DatabaseConfig{
-        public string DefaultConnection {get; set;}
+        public string? DefaultConnection {get; set;}
     }
 }
