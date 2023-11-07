@@ -72,5 +72,36 @@ BEGIN
     WHERE workId = @workId;
 END;
 
+Go
+CREATE PROCEDURE createEmployeeLogin
+    @username NVARCHAR(50),
+    @password NVARCHAR(50)
+AS
+BEGIN
+    INSERT INTO EmployeeLogin (employeeId, username, password)
+    VALUES (NEWID(), @username, @password);
+END
+
+Go
+CREATE PROCEDURE updateEmployeeLogin
+    @employeeId UNIQUEIDENTIFIER,
+    @username NVARCHAR(50),
+    @password NVARCHAR(50)
+AS
+BEGIN
+    UPDATE EmployeeLogin
+    SET
+        username = @username,
+        password = @password
+    WHERE employeeId = @employeeId;
+END
 
 
+CREATE PROCEDURE selectEmployeLoginByName
+    @username NVARCHAR(50)
+AS
+BEGIN
+    SELECT TOP 1 *
+    FROM EmployeeLogin
+    WHERE username = @username;
+END
