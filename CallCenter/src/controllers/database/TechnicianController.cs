@@ -40,7 +40,7 @@ namespace CallCenter.Controllers
             return Ok();
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateTechnician([FromBody] UpdateTechnicianRequest technician)
         {
             if (!ModelState.IsValid)

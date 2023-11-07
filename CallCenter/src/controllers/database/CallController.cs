@@ -38,7 +38,7 @@ namespace CallCenter.Controllers
             return Ok();
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateCall([FromBody] UpdateCallRequest call)
         {
             if (!ModelState.IsValid)

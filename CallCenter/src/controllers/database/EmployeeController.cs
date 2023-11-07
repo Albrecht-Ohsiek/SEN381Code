@@ -37,7 +37,7 @@ namespace CallCenter.Controllers
             return Ok();
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateEmployee([FromBody] UpdateEmployeeRequest employee)
         {
             if (!ModelState.IsValid)
@@ -105,7 +105,7 @@ namespace CallCenter.Controllers
         }
 
         [HttpGet("getby/phoneNumber/{phoneNumber}")]
-        public async Task<IActionResult> GetEmployeeByStatus([FromRoute] string phoneNumber)
+        public async Task<IActionResult> GetEmployeeByPhone([FromRoute] string phoneNumber)
         {
                 Employee employee = await _employeeRepository.GetEmployeeByPhoneNumber(phoneNumber);
                 if (employee == null)
