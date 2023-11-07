@@ -44,6 +44,10 @@ namespace CallCenter.Controllers
             }
 
             CallReport existingCallReport = await _callReportRepository.GetCallReportsByCallReportId(call.callReportId);
+            if (existingCallReport == null)
+            {
+                return NotFound();
+            }
 
             CallReport newCallReport = new CallReport()
             {

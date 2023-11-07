@@ -49,6 +49,10 @@ namespace CallCenter.Controllers
             }
 
             Client existingClient = await _clientRepository.GetClientById(client.clientId);
+            if (existingClient == null)
+            {
+                return NotFound();
+            }
 
             Client newClient = new Client()
             {

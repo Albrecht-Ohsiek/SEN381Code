@@ -46,6 +46,10 @@ namespace CallCenter.Controllers
             }
 
             WorkRequest existingWorkRequest = await _workRequestRepository.GetWorkRequestById(workRequest.requestId);
+            if (existingWorkRequest == null)
+            {
+                return NotFound();
+            }
 
             WorkRequest newWorkRequest = new WorkRequest()
             {

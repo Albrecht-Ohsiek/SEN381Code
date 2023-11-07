@@ -47,6 +47,10 @@ namespace CallCenter.Controllers
             }
 
             Contract existingContract = await _contractRepository.GetContractById(contract.contractId);
+            if (existingContract == null)
+            {
+                return NotFound();
+            }
 
             Contract newContract = new Contract()
             {

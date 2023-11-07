@@ -49,6 +49,10 @@ namespace CallCenter.Controllers
             }
 
             Technician existingTechnician = await _technicianRepository.GetTechnicianById(technician.technicianId);
+            if (existingTechnician == null)
+            {
+                return NotFound();
+            }
 
             Technician newTechnician = new Technician()
             {

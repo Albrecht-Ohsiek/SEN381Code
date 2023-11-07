@@ -44,6 +44,10 @@ namespace CallCenter.Controllers
             }
 
             Work existingWork = await _workRepository.GetWorkById(work.workId);
+            if (existingWork == null)
+            {
+                return NotFound();
+            }
 
             Work newWork = new Work()
             {

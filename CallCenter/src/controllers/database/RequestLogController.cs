@@ -54,6 +54,10 @@ namespace CallCenter.Controllers
             }
 
             RequestLog existingRequestLog = await _requestLogRepository.GetRequestLogById(requestLog.requestId);
+            if (existingRequestLog == null)
+            {
+                return NotFound();
+            }
 
             RequestLog newRequestLog = new RequestLog()
             {

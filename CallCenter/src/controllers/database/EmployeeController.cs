@@ -46,6 +46,10 @@ namespace CallCenter.Controllers
             }
 
             Employee existingEmployee = await _employeeRepository.GetEmployeeById(employee.employeeId);
+            if (existingEmployee == null)
+            {
+                return NotFound();
+            }
 
             Employee newEmployee = new Employee()
             {
