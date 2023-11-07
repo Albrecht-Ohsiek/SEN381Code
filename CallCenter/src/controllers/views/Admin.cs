@@ -1,4 +1,3 @@
-using CallCenter.Controllers;
 using CallCenter.Repository;
 using Microsoft.AspNetCore.Mvc;
 

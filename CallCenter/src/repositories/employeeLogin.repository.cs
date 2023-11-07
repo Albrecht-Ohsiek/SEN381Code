@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 
 namespace CallCenter.Repository
 {
-    public class EmployeeLoginRepository
+    public class EmployeeLoginRepository : IEmployeeLoginRepository
     {
         private readonly DatabaseServices _dbService;
 
@@ -38,7 +38,7 @@ namespace CallCenter.Repository
                                 EmployeeId = reader.GetGuid(reader.GetOrdinal("employeeId")),
                                 Username = reader.GetString(reader.GetOrdinal("username")),
                                 Password = reader.GetString(reader.GetOrdinal("password"))
-                            };
+                            };
 
                             logins.Add(login);
                         }

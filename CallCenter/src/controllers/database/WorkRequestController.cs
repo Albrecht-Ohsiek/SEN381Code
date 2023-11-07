@@ -9,9 +9,9 @@ namespace CallCenter.Controllers
     [Route("/api/workRequest")]
     public class WorkRequestController : ControllerBase
     {
-        private readonly WorkRequestRepository _workRequestRepository;
+        private readonly IWorkRequestRepository _workRequestRepository;
 
-        public WorkRequestController(WorkRequestRepository workRequestRepository)
+        public WorkRequestController(IWorkRequestRepository workRequestRepository)
         {
             _workRequestRepository = workRequestRepository;
         }

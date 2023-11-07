@@ -26,16 +26,16 @@ namespace CallCenter.Config
             services.AddSingleton<DatabaseServices>();
             services.AddSingleton<LoginServices>();
 
-            services.AddTransient<CallRepository>();
-            services.AddTransient<CallReportRepository>();
-            services.AddTransient<ClientRepository>();
-            services.AddTransient<ContractRepository>();
-            services.AddTransient<EmployeeRepository>();
-            services.AddTransient<EmployeeLoginRepository>();
-            services.AddTransient<RequestLogRepository>();
-            services.AddTransient<TechnicianRepository>();
-            services.AddTransient<WorkRepository>();
-            services.AddTransient<WorkRequestRepository>();
+            services.AddTransient<ICallRepository, CallRepository>();
+            services.AddTransient<ICallReportRepository, CallReportRepository>();
+            services.AddTransient<IClientRepository, ClientRepository>();
+            services.AddTransient<IContractRepository, ContractRepository>();
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IEmployeeLoginRepository, EmployeeLoginRepository>();
+            services.AddTransient<IRequestLogRepository, RequestLogRepository>();
+            services.AddTransient<ITechnicianRepository, TechnicianRepository>();
+            services.AddTransient<IWorkRepository, WorkRepository>();
+            services.AddTransient<IWorkRequestRepository, WorkRequestRepository>();
 
             services.AddLogging();
             services.AddControllersWithViews();

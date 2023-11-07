@@ -9,12 +9,12 @@ namespace CallCenter.Controllers
     [Route("/api/requestLog")]
     public class RequestLogController : ControllerBase
     {
-        private readonly RequestLogRepository _requestLogRepository;
-        private readonly TechnicianRepository _technicianRepository;
-        private readonly EmployeeRepository _employeeRepository;
-        private readonly ClientRepository _clientRepository;
+        private readonly IRequestLogRepository _requestLogRepository;
+        private readonly ITechnicianRepository _technicianRepository;
+        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IClientRepository _clientRepository;
 
-        public RequestLogController(RequestLogRepository requestLogRepository, TechnicianRepository technicianRepository, EmployeeRepository employeeRepository, ClientRepository clientRepository)
+        public RequestLogController(IRequestLogRepository requestLogRepository, ITechnicianRepository technicianRepository, IEmployeeRepository employeeRepository, IClientRepository clientRepository)
         {
             _requestLogRepository = requestLogRepository;
             _technicianRepository = technicianRepository;
