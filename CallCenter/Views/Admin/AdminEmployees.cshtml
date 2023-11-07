@@ -6,7 +6,6 @@
 }
 <style>
     .admin-employees{
-        background-color: #ffffff;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -130,7 +129,7 @@
         position: absolute;
         width: 1358px;
         height: 714px;
-        top: 50px;
+        top: 100px;
         left: 209px;
         background-color: #d6ebff;
         border-radius: 25px 0px 25px 0px;
@@ -221,14 +220,14 @@
         line-height: 15px;
         white-space: nowrap;
     }
-
+@* 
     .admin-employees .group-6 {
         position: absolute;
         width: 146px;
         height: 65px;
         top: 1155px;
         left: 234px;
-    }
+    } *@
 
     .admin-employees .text-wrapper-27 {
         position: absolute;
@@ -244,13 +243,13 @@
         white-space: nowrap;
     }
 
-    .admin-employees .group-7 {
+    @* .admin-employees .group-7 {
         position: absolute;
         width: 146px;
         height: 65px;
         top: 1155px;
         left: 1399px;
-    }
+    } *@
 
     .admin-employees .text-wrapper-28 {
         position: absolute;
@@ -269,7 +268,7 @@
     .search-container {
         display: flex;
         align-items: center;
-        width: 320px;
+        width: 500px;
         /* Adjust width to accommodate label and input */
         margin-bottom: 10px;
         /* Optional margin for spacing */
@@ -315,6 +314,7 @@
 
     .admin-employees .text-wrapper-31 {
         position: absolute;
+        top: 15px;
         left: 242px;
         font-family: "Inter-Regular", Helvetica;
         font-weight: 400;
@@ -558,7 +558,7 @@
             <div class="group">
                 <div class="overlap-group-wrapper">
                     <div class="overlap-group">
-                        <img class="vector" src="img/vector.svg" />8
+                        <img class="vector" src="img/vector.svg" />
                         <div class="text-wrapper">Employees</div>
                     </div>
                 </div>
@@ -566,7 +566,7 @@
                     <div class="div-wrapper">
                         <div class="overlap-group-2">
                             <div class="rectangle"></div>
-                            <div class="text-wrapper-2">View Logs</div>
+                            <div class="text-wrapper-2" href="/Admin/AdminRequestLogs">View Logs</div>
                             <img class="img" src="img/image.svg" />
                         </div>
                     </div>
@@ -628,11 +628,6 @@
         <div class="overlap-wrapper">
             <div class="overlap-3">
                 <div class="text-wrapper-26">Add</div>
-            </div>
-        </div>
-        <div class="group-7">
-            <div class="overlap-3">
-                <div class="text-wrapper-28">Edit</div>
             </div>
         </div>
         <div class="search-container">
