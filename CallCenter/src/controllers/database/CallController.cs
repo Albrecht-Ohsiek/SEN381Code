@@ -9,9 +9,9 @@ namespace CallCenter.Controllers
     [Route("/api/call")]
     public class CallController : ControllerBase
     {
-        private readonly CallRepository _callRepository;
+        private readonly ICallRepository _callRepository;
 
-        public CallController(CallRepository callRepository)
+        public CallController(ICallRepository callRepository)
         {
             _callRepository = callRepository;
         }

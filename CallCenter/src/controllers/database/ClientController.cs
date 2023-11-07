@@ -9,9 +9,9 @@ namespace CallCenter.Controllers
     [Route("/api/client")]
     public class ClientController : ControllerBase
     {
-        private readonly ClientRepository _clientRepository;
+        private readonly IClientRepository _clientRepository;
 
-        public ClientController(ClientRepository clientRepository)
+        public ClientController(IClientRepository clientRepository)
         {
             _clientRepository = clientRepository;
         }

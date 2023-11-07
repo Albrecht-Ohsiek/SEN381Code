@@ -9,9 +9,9 @@ namespace CallCenter.Controllers
     [Route("/api/contract")]
     public class ContractController : ControllerBase
     {
-        private readonly ContractRepository _contractRepository;
+        private readonly IContractRepository _contractRepository;
 
-        public ContractController(ContractRepository contractRepository)
+        public ContractController(IContractRepository contractRepository)
         {
             _contractRepository = contractRepository;
         }

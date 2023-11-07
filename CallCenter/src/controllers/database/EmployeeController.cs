@@ -9,9 +9,9 @@ namespace CallCenter.Controllers
     [Route("/api/employee")]
     public class EmployeeController : ControllerBase
     {
-        private readonly EmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public EmployeeController(EmployeeRepository employeeRepository)
+        public EmployeeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
         }
