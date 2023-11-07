@@ -96,7 +96,7 @@ BEGIN
     WHERE employeeId = @employeeId;
 END
 
-
+go
 CREATE PROCEDURE selectEmployeLoginByName
     @username NVARCHAR(50)
 AS
