@@ -9,10 +9,10 @@ namespace CallCenter.Controllers
     [Route("/api/technician")]
     public class TechnicianController : ControllerBase
     {
-        private readonly TechnicianRepository _technicianRepository;
-        private readonly EmployeeRepository _employeeRepository;
+        private readonly ITechnicianRepository _technicianRepository;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public TechnicianController(TechnicianRepository technicianRepository, EmployeeRepository employeeRepository)
+        public TechnicianController(ITechnicianRepository technicianRepository, IEmployeeRepository employeeRepository)
         {
             _technicianRepository = technicianRepository;
             _employeeRepository = employeeRepository;

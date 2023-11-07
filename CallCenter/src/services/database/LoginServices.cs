@@ -5,9 +5,9 @@ namespace CallCenter.Services
 {
     public class LoginServices
     {
-        private readonly EmployeeLoginRepository _employeeLoginRepository;
+        private readonly IEmployeeLoginRepository _employeeLoginRepository;
 
-        public LoginServices(EmployeeLoginRepository employeeLoginRepository)
+        public LoginServices(IEmployeeLoginRepository employeeLoginRepository)
         {
             _employeeLoginRepository = employeeLoginRepository;
         }

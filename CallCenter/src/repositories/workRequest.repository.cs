@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 
 namespace CallCenter.Repository
 {
-    public class WorkRequestRepository
+    public class WorkRequestRepository: IWorkRequestRepository
     {
         private readonly DatabaseServices _dbService;
 
