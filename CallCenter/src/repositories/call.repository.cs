@@ -1,6 +1,5 @@
 using System.Data;
 using CallCenter.Models;
-using CallCenter.Types;
 using Microsoft.Data.SqlClient;
 
 namespace CallCenter.Repository

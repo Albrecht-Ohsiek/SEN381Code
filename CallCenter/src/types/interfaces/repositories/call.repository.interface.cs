@@ -1,6 +1,6 @@
 using CallCenter.Models;
 
-namespace CallCenter.Types
+namespace CallCenter.Repository
 {
     public interface ICallRepository
     {
