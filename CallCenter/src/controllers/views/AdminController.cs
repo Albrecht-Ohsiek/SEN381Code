@@ -1,5 +1,7 @@
 using CallCenter.Controllers;
 using CallCenter.Repository;
+using CallCenter.Types;
+using System.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CallCenter.src.controllers
@@ -26,6 +28,23 @@ namespace CallCenter.src.controllers
         public async Task<IActionResult> AdminRequestLogs()
         {
             return View(await _technicianRepository.GetAllTechnicians());
+        }
+
+        // GET: Employee/Details/?
+        public async Task<IActionResult> EmployeeDetails(Guid id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var employee = await _employeeRepository.GetEmployeeById(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            return View(employee);
         }
     }
 }
