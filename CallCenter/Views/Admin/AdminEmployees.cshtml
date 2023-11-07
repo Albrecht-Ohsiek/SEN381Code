@@ -1,27 +1,15 @@
 ﻿@model IEnumerable<CallCenter.Models.Employee>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Admin";
 }
-
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-
-<body>
-    @Html.Partial("~/Views/Shared/Header.cshtml")
-    @Html.Partial("~/Views/Shared/AdminPanel.cshtml")
-    @ViewBag.Message
     <div class="admin-employees">
         <div class="div">
             <div class="overlap">
                 <div class="group">
                     <div class="overlap-group-wrapper">
                         <div class="overlap-group">
-                            <img class="vector" src="img/vector.svg" />
+                            <img class="vector" src="img/vector.svg" />8
                             <div class="text-wrapper">Employees</div>
                         </div>
                     </div>
@@ -117,6 +105,3 @@
             });
         });
     </script>
-</body>
-
-</html>

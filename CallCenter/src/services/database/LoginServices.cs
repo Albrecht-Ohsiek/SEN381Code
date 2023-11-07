@@ -12,6 +12,11 @@ namespace CallCenter.Services
             _employeeLoginRepository = employeeLoginRepository;
         }
 
+        public LoginServices()
+        {
+            
+        }
+
         public async Task<string> AuthenticateUser(AddLoginRequest user)
         {
             Login exsistingUser = await _employeeLoginRepository.GetEmployeeLoginByName(user.username);

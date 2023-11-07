@@ -1,4 +1,0 @@
-namespace CallCenter.Controllers
-{
-
-}
