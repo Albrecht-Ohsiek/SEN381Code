@@ -53,7 +53,7 @@ namespace CallCenter.Controllers
             {
                 callReportId = existingCallReport.callReportId,
                 workId = existingCallReport.workId,
-                calls = call.calls,
+                calls = call.calls ?? existingCallReport.calls,
             };
 
             await _callReportRepository.UpdateCallReport(newCallReport);

@@ -39,9 +39,9 @@ namespace CallCenter.Repository
                                 clientId = reader.GetGuid(reader.GetOrdinal("clientId")),
                                 lastCallDate = reader.GetDateTime(reader.GetOrdinal("lastCallDate")),
                                 callDuration = reader.GetDouble(reader.GetOrdinal("callDuration")),
-                                technicianId = reader.GetGuid(reader.GetOrdinal("technicianName")),
+                                technicianId = reader.GetGuid(reader.GetOrdinal("technicianId")),
                                 priorityLevel = reader.GetString(reader.GetOrdinal("priorityLevel")),
-                                status = reader.GetString(reader.GetOrdinal("status"))
+                                status = reader.GetString(reader.GetOrdinal("requestStatus"))
 
                             };
                             requestLogs.Add(requestLog);
@@ -130,7 +130,7 @@ namespace CallCenter.Repository
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@status", priorityLevel),
+                new SqlParameter("@priorityLevel", priorityLevel),
             };
 
             return await ExecuteRequestLogQueryAsync("selecRequestLogByPriority", parameters);

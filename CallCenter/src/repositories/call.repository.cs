@@ -64,7 +64,7 @@ namespace CallCenter.Repository
                 new SqlParameter("@clientId", call.clientId),
                 new SqlParameter("@startTime", call.startTime),
                 new SqlParameter("@workId", call.workId),
-                new SqlParameter("@startTime", call.startTime),
+                new SqlParameter("@employeeId", call.employeeId),
                 new SqlParameter("@endTime", call.endTime)
             };
 

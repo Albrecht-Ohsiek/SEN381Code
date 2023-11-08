@@ -5,6 +5,6 @@ namespace CallCenter.Types{
     {   
         Guid callReportId{get; set;}
         Guid workId {get; set;}
-        List<Call>? calls {get; set;}
+        List<Id>? calls {get; set;}
     }
 }

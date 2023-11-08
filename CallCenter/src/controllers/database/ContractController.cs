@@ -78,9 +78,9 @@ namespace CallCenter.Controllers
         }
 
         [HttpGet("getby/contractId/{contractId}")]
-        public async Task<IActionResult> GetContractByContractId([FromRoute] string reportId)
+        public async Task<IActionResult> GetContractByContractId([FromRoute] string contractId)
         {
-            if (Guid.TryParse(reportId, out Guid result))
+            if (Guid.TryParse(contractId, out Guid result))
             {
                 Contract contract = await _contractRepository.GetContractById(result);
                 if (contract == null)
@@ -114,7 +114,7 @@ namespace CallCenter.Controllers
         }
 
         [HttpGet("getby/serviceLevel/{serviceLevel}")]
-        public async Task<IActionResult> GetContractByServiceLevel([FromRoute] int serviceLevel)
+        public async Task<IActionResult> GetContractByServiceLevel([FromRoute] string serviceLevel)
         {
             List<Contract> contracts = await _contractRepository.GetContractByServiceLevel(serviceLevel);
             if (contracts == null)

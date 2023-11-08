@@ -39,9 +39,9 @@ namespace CallCenter.Repository
                                 contractId = reader.GetGuid(reader.GetOrdinal("contractId")),
                                 clientId = reader.GetGuid(reader.GetOrdinal("clientId")),
                                 contractDetails = reader.GetString(reader.GetOrdinal("contractDetails")),
-                                serviceLevel = reader.GetInt32(reader.GetOrdinal("serviceLevel")),
+                                serviceLevel = reader.GetString(reader.GetOrdinal("serviceLevel")),
                             };
-                            string contractTypeValue = reader.GetString(reader.GetOrdinal("department"));
+                            string contractTypeValue = reader.GetString(reader.GetOrdinal("contractType"));
                             if (Enum.TryParse<ContractType>(contractTypeValue, out ContractType contractType))
                             {
                                 contract.contractType = contractType;
@@ -128,7 +128,7 @@ namespace CallCenter.Repository
             return await ExecuteContractQueryAsync("selectContractByClientId", parameters);
         }
 
-        public async Task<List<Contract>> GetContractByServiceLevel(int serviceLevel)
+        public async Task<List<Contract>> GetContractByServiceLevel(string serviceLevel)
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
