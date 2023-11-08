@@ -16,6 +16,11 @@ namespace CallCenter.Controllers
             _clientRepository = clientRepository;
         }
 
+        public ClientController()
+        {
+            
+        }
+
         [HttpPost("add")]
         public async Task<IActionResult> AddClient([FromBody] AddClientRequest client)
         {
