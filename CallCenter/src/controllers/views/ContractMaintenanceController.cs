@@ -6,9 +6,15 @@ namespace CallCenter.Controllers
 {
     public class ContractMaintenanceController : Controller 
     {
-        public IActionResult ContractMaintenanceContracts()
+        private readonly IContractRepository _contractRepository;
+        public ContractMaintenanceController(IContractRepository contractRepository)
         {
-            return View();
+            _contractRepository = contractRepository;
+        }
+        public async Task<IActionResult> ContractMaintenanceContracts()
+        {
+            var contracts = await _contractRepository.GetAllContracts();
+            return View(contracts);
         }
         
         public IActionResult ContractMaintenanceServices()

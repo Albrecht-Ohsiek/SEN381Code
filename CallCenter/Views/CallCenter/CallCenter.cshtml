@@ -1,6 +1,7 @@
-﻿@{
+﻿@model CallCenter.Models.HydratedTechnicianResponse;
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "Admin";
+    ViewData["Title"] = "Call Center";
 }
 <style>
     /* Style for the form container */
@@ -761,8 +762,8 @@
         </div>
         <div class="priority-level">
             <label class="text-wrapper-5">Priority level</label>
-        <select name="priority" id="priority">
-        </select>
+            <select name="priority" id="priority">
+            </select>
         </div>
         <div class="funcs">
             <button type="submit" class="button" id="WR">
@@ -784,41 +785,43 @@
             <div class="search-bar"></div>
             <div class="button" id="Search">Search</div>
         </div>
-        @model CallCenter.Models.Client;
         <div class="client">
             <table id="details">
                 <tr>
                     <td><span class="text-wrapper-5">Client Name:</span></td>
                     <td>
-                        <span class="text-wrapper-4" id="c-name"> @Html.DisplayFor(model => model.clientName)</span>
+                        @* <span class="text-wrapper-4" id="c-name"> @Html.DisplayFor(model => model.)</span> *@
                     </td>
                 </tr>
 
                 <tr>
                     <td><span class="text-wrapper-5">Client ID:</span></td>
-                    <td><span class="text-wrapper-4" id="c-id"> @Html.DisplayFor(model => model.clientId) </span></td>
+                    @* <td><span class="text-wrapper-4" id="c-id"> @Html.DisplayFor(model => model.clientId)
+                    </span></td> *@
                 </tr>
 
                 <tr>
                     <td><span class="text-wrapper-5">Phone Number:</span></td>
                     <td>
-                        <span class="text-wrapper-4" id="c-phone"> @Html.DisplayFor(model => model.phoneNumber)</span>
+                        @* <span class="text-wrapper-4" id="c-phone"> @Html.DisplayFor(model =>
+                        model.phoneNumber)</span> *@
                     </td>
                 </tr>
 
                 <tr>
                     <td><span class="text-wrapper-5">Address:</span></td>
                     <td>
-                        <span class="text-wrapper-4" id="c-address">
-                             @Html.DisplayFor(model => model.clientAddress)
-                        </span>
+                        @* <span class="text-wrapper-4" id="c-address">
+                        @Html.DisplayFor(model => model.clientAddress)
+                        </span> *@
                     </td>
                 </tr>
 
                 <tr>
                     <td><span class="text-wrapper-5">Last Call Date:</span></td>
                     <td>
-                        <span class="text-wrapper-4" id="c-last"> @Html.DisplayFor(model => model.lastCallDate)</span>
+                        @* <span class="text-wrapper-4" id="c-last"> @Html.DisplayFor(model =>
+                        model.lastCallDate)</span> *@
                     </td>
                 </tr>
             </table>
@@ -827,13 +830,12 @@
         <div class="text-wrapper-14">Notes:</div>
         <div class="overlap-7">
             <table id="notes">
-                <td> @Html.DisplayFor(model => model.clientNotes)</td>
+                @* <td> @Html.DisplayFor(model => model.clientNotes)</td> *@
             </table>
         </div>
     </div>
 </div>
 <button type="button" onclick="openModal()">Generate Work Request (Express)</button>
-
 <!-- modal form for generating express work requests -->
 <div id="modalForm" style="display:none;">
     <h3>Express Work Request</h3>
@@ -920,17 +922,17 @@
             //add technicians to dropdown menu
             window.onload = function () {
                 fetch('/CallCenter/GetTechnicians')
-                    .then(response => response.json())
-                    .then(data => {
-                        var dropdown = document.getElementById('technicianDropdown');
-                        data.forEach(tech => {
-                            var option = document.createElement('option');
-                            option.value = tech.split(':')[0].trim();
-                            option.text = tech;
-                            dropdown.add(option);
-                        });
-                    });
-            };
+                .then(response => response.json())
+                .then(data => {
+                var dropdown = document.getElementById('technicianDropdown');
+                data.forEach(tech => {
+                var option = document.createElement('option');
+                option.value = tech.split(':')[0].trim();
+                option.text = tech;
+                dropdown.add(option);
+                });
+                });
+                };
             //Timer code
             let startTime;
             let endTime;
