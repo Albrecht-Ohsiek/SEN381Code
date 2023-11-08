@@ -13,7 +13,7 @@ namespace CallCenter.Repository
             _dbService = dbService;
         }
 
-        private async Task<List<RequestLog>> ExecuteRequestLogQueryAsync(string queryName, SqlParameter[] parameters = null)
+        private async Task<List<RequestLog>> ExecuteRequestLogQueryAsync(string queryName, SqlParameter[]? parameters = null)
         {
             using (SqlConnection connection = _dbService.GetOpenConnection())
             using (SqlCommand command = _dbService.CreateCommand(queryName, connection))
@@ -39,19 +39,19 @@ namespace CallCenter.Repository
                                 clientId = reader.GetGuid(reader.GetOrdinal("clientId")),
                                 lastCallDate = reader.GetDateTime(reader.GetOrdinal("lastCallDate")),
                                 callDuration = reader.GetDouble(reader.GetOrdinal("callDuration")),
-                                technicianId = reader.GetGuid(reader.GetOrdinal("technicianName")),
+                                technicianId = reader.GetGuid(reader.GetOrdinal("technicianId")),
                                 priorityLevel = reader.GetString(reader.GetOrdinal("priorityLevel")),
-                                status = reader.GetString(reader.GetOrdinal("status"))
+                                status = reader.GetString(reader.GetOrdinal("requestStatus"))
 
                             };
                             requestLogs.Add(requestLog);
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Handle any exceptions that may occur during the execution of the stored procedure.
-                    throw ex;
+                    throw;
                 }
 
                 return requestLogs;
@@ -130,7 +130,7 @@ namespace CallCenter.Repository
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@status", priorityLevel),
+                new SqlParameter("@priorityLevel", priorityLevel),
             };
 
             return await ExecuteRequestLogQueryAsync("selecRequestLogByPriority", parameters);

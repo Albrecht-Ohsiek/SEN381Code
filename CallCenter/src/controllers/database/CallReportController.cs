@@ -35,7 +35,7 @@ namespace CallCenter.Controllers
             return Ok();
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateCallReport([FromBody] UpdateCallReportRequest call)
         {
             if (!ModelState.IsValid)
@@ -53,7 +53,7 @@ namespace CallCenter.Controllers
             {
                 callReportId = existingCallReport.callReportId,
                 workId = existingCallReport.workId,
-                calls = call.calls,
+                calls = call.calls ?? existingCallReport.calls,
             };
 
             await _callReportRepository.UpdateCallReport(newCallReport);

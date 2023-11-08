@@ -2,17 +2,15 @@
 {
     public class Login
 	{
-        private Guid employeeId;
-        private string username;
-        private string password;
+        public Guid EmployeeId { get; set; }
+        public required string Username { get; set; }
+        public required string Password { get; set; }
+
         public Login()
         {
 
         }
 
-        public Guid EmployeeId { get => employeeId; set => employeeId = value; }
-        public string Username { get => username; set => username = value; }
-        public string Password { get => password; set => password = value; }
     }
 }
 

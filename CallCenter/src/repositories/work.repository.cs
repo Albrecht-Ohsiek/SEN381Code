@@ -13,7 +13,7 @@ namespace CallCenter.Repository
             _dbService = dbService;
         }
 
-        private async Task<List<Work>> ExecuteWorkQueryAsync(string queryName, SqlParameter[] parameters = null)
+        private async Task<List<Work>> ExecuteWorkQueryAsync(string queryName, SqlParameter[]? parameters = null)
         {
             using (SqlConnection connection = _dbService.GetOpenConnection())
             using (SqlCommand command = _dbService.CreateCommand(queryName, connection))
@@ -35,7 +35,7 @@ namespace CallCenter.Repository
                         {
                             Work work = new Work
                             {
-                                workId = reader.GetGuid(reader.GetOrdinal("worId")),
+                                workId = reader.GetGuid(reader.GetOrdinal("workId")),
                                 technicianId = reader.GetGuid(reader.GetOrdinal("technicianId")),
                                 workDate = reader.GetDateTime(reader.GetOrdinal("workDate")),
                             };
@@ -43,10 +43,10 @@ namespace CallCenter.Repository
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Handle any exceptions that may occur during the execution of the stored procedure.
-                    throw ex;
+                    throw;
                 }
 
                 return works;
@@ -100,7 +100,7 @@ namespace CallCenter.Repository
                 new SqlParameter("@technicianId", technicianId),
             };
 
-            return await ExecuteWorkQueryAsync("selectWorkById", parameters);
+            return await ExecuteWorkQueryAsync("selectWorkByTechnicianId", parameters);
         }
 
     }

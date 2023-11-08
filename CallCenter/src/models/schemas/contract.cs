@@ -7,8 +7,8 @@ namespace CallCenter.Models
         public Guid contractId { get ; set ; }
         public Guid clientId { get ; set ; }
         public ContractType contractType { get ; set ; }
-        public string contractDetails { get ; set ; }
-        public int serviceLevel { get ; set ; }
+        public required string contractDetails { get ; set ; }
+        public String serviceLevel { get ; set ; }
         public ContractStatus contractStatus { get ; set ; }
     
         public Contract()
@@ -16,7 +16,7 @@ namespace CallCenter.Models
             
         }
 
-        public Contract(Guid contractId, Guid clientId, ContractType contractType, string contractDetails, int serviceLevel, ContractStatus contractStatus)
+        public Contract(Guid contractId, Guid clientId, ContractType contractType, string contractDetails, string serviceLevel, ContractStatus contractStatus)
         {
             this.contractId = contractId;
             this.clientId = clientId;

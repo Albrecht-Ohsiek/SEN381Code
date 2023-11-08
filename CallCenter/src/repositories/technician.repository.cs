@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.SqlTypes;
 using CallCenter.Models;
 using Microsoft.Data.SqlClient;
 
@@ -13,7 +14,7 @@ namespace CallCenter.Repository
             _dbService = dbService;
         }
 
-        private async Task<List<Technician>> ExecuteTechnicianQueryAsync(string queryName, SqlParameter[] parameters = null)
+        private async Task<List<Technician>> ExecuteTechnicianQueryAsync(string queryName, SqlParameter[]? parameters = null)
         {
             using (SqlConnection connection = _dbService.GetOpenConnection())
             using (SqlCommand command = _dbService.CreateCommand(queryName, connection))
@@ -46,10 +47,10 @@ namespace CallCenter.Repository
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Handle any exceptions that may occur during the execution of the stored procedure.
-                    throw ex;
+                    throw;
                 }
 
                 return technicians;
@@ -135,9 +136,15 @@ namespace CallCenter.Repository
 
         public async Task<List<Technician>> GetTechnicianByAvailability(string availability)
         {
+            SqlBoolean state = SqlBoolean.Zero;
+            if (availability == "true")
+            {
+                state = SqlBoolean.One;
+            }
+
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@availability", availability),
+                new SqlParameter("@availability", state),
             };
 
             return await ExecuteTechnicianQueryAsync("selectTechnicianByAvailability", parameters);

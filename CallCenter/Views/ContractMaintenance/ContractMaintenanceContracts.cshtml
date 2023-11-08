@@ -1,12 +1,200 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-    @Html.Partial("~/Views/Shared/Header.cshtml")
-    @Html.Partial("~/Views/Shared/ContractPanel.cshtml")
+﻿@model IEnumerable<CallCenter.Models.Contract>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Service Requests";
+}
+<style>
+    table {
+        width: 90%;
+        border-collapse: collapse;
+        justify-content: center;
+        font-family: "Inter-Regular", Helvetica;
+        font-weight: 400;
+        color: #000000;
+        font-size: 20px;
+        letter-spacing: 0;
+        line-height: 15px;
+    }
 
-</body>
-</html>
+    th,
+    td {
+        padding: 10px;
+        justify-content: center;
+    }
+
+    th {
+        background-color: #d6ebff;
+    }
+
+    button {
+        height: 100%;
+        width: 100px;
+        border: none;
+        background: #007bff;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    .frame {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        top: 500px;
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        width: 500px;
+        /* Adjust width to accommodate label and input */
+        margin-bottom: 10px;
+        /* Optional margin for spacing */
+    }
+
+    .search-label {
+        margin-right: 10px;
+        /* Space between label and search bar */
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        height: 50px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .heading-container {
+        position: relative;
+        left: 50px;
+        display: flex;
+        flex-direction: row;
+        gap: 900px;
+    }
+</style>
+<div class="sr">
+    <div class="div">
+        <div class="heading-container">
+             <h1>Contracts</h1>
+            <div class="search-container">
+                <div class="search-label">Search by ID</div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Enter ID" />
+                    <button type="submit"
+                        style="margin-left: 150px; border-radius: 10px 0px 0px 10px;">Search</button>
+                </div>
+            </div>
+        </div>
+
+       
+        <div class="table-container">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Contract ID</th>
+                        <th onclick="sortTable(1)">Client ID</th>
+                        <th onclick="sortTable(2)">Type</th>
+                        <th onclick="sortTable(3)">Details</th>
+                        <th onclick="sortTable(4)">Service Level</th>
+                        <th onclick="sortTable(4)">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+
+                    {
+                        @foreach (var item in Model)
+
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.contractId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.clientId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.contractType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.contractDetails)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.serviceLevel)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.contractStatus)
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                    else
+
+                    {
+                        <p>No data available.</p>
+                    }
+                    <div class="frame">
+                        <button type="button" class="button">
+                            <div class="button-text">Add</div>
+                        </button>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    let ascending = true;
+    function sortTable(columnIndex) {
+        const table = document.getElementById("data-table");
+        const rows = Array.from(table.getElementsByTagName("tr"));
+        const isNumeric = columnIndex === 0 || columnIndex === 1;
+
+        rows.shift(); // Remove the header row
+
+        rows.sort((a, b) => {
+            let aText = a.getElementsByTagName("td")[columnIndex].innerText;
+            let bText = b.getElementsByTagName("td")[columnIndex].innerText;
+
+            if (isNumeric) {
+                aText = parseInt(aText);
+                bText = parseInt(bText);
+            }
+
+            if (ascending) {
+                return aText > bText ? 1 : -1;
+            } else {
+                return aText < bText ? 1 : -1;
+            }
+        });
+
+        while (table.rows.length > 1) {
+            table.deleteRow(1);
+        }
+
+        rows.forEach((row) => {
+            table.appendChild(row);
+        });
+
+        changeHeaderColor(columnIndex);
+        ascending = !ascending;
+    }
+
+    function changeHeaderColor(columnIndex) {
+        const headers = document.getElementsByTagName("th");
+        for (let i = 0; i < headers.length; i++) {
+            if (i === columnIndex) {
+                headers[i].style.color = "#fff";
+            } else {
+                headers[i].style.color = ""; // Reset other headers
+            }
+        }
+    }
+
+    
+</script>

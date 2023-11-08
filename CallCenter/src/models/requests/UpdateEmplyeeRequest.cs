@@ -1,3 +1,4 @@
+using System;
 using CallCenter.Types;
 
 namespace CallCenter.Models

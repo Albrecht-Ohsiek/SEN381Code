@@ -13,7 +13,7 @@ namespace CallCenter.Repository
             _dbService = dbService;
         }
 
-        private async Task<List<CallReport>> ExecuteCallReportQueryAsync(string queryName, SqlParameter[] parameters = null)
+        private async Task<List<CallReport>> ExecuteCallReportQueryAsync(string queryName, SqlParameter[]? parameters = null)
         {
             using (SqlConnection connection = _dbService.GetOpenConnection())
             using (SqlCommand command = _dbService.CreateCommand(queryName, connection))
@@ -38,14 +38,17 @@ namespace CallCenter.Repository
                                 callReportId = reader.GetGuid(reader.GetOrdinal("callReportId")),
                                 workId = reader.GetGuid(reader.GetOrdinal("workId")),
                             };
+                            string callsString = reader.GetString(reader.GetOrdinal("calls"));
+                            callReport.calls = callsString.Split(',').Select(s => new Id { id = Guid.Parse(s) }).ToList();
+
                             calls.Add(callReport);
                         }
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
                     // Handle any exceptions that may occur during the execution of the stored procedure.
-                    throw ex;
+                    throw;
                 }
 
                 return calls;
@@ -53,11 +56,13 @@ namespace CallCenter.Repository
         }
         public async Task AddCallReport(CallReport callReport)
         {
+            string callsString = string.Join(",", callReport.calls.Select(id => id.id));
+
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@callReportId", callReport.callReportId),
                 new SqlParameter("@workId", callReport.workId),
-
+                new SqlParameter("@calls", callsString)
             };
 
             await ExecuteCallReportQueryAsync("createNewCallReport", parameters);
@@ -65,10 +70,12 @@ namespace CallCenter.Repository
 
         public async Task UpdateCallReport(CallReport callReport)
         {
+            string callsString = string.Join(",", callReport.calls.Select(id => id.id));
+
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@callReportId", callReport.callReportId),
-                new SqlParameter("@calls", callReport.calls),
+                new SqlParameter("@calls", callsString),
             };
 
             await ExecuteCallReportQueryAsync("updateCallReport", parameters);

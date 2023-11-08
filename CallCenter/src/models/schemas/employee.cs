@@ -5,10 +5,10 @@ namespace CallCenter.Models
     public class Employee : IEmployee
     {
         public Guid employeeId { get; set; }
-        public string employeeName { get; set; }
+        public required string employeeName { get; set; }
         public Department department { get; set; }
-        public string emailAddress { get; set; }
-        public string phoneNumber { get; set; }
+        public required string emailAddress { get; set; }
+        public required string phoneNumber { get; set; }
 
         public Employee()
         {

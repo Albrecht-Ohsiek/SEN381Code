@@ -40,7 +40,7 @@ namespace CallCenter.Controllers
             return Ok();
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateClient([FromBody] UpdateClientRequest client)
         {
             if (!ModelState.IsValid)
@@ -82,9 +82,9 @@ namespace CallCenter.Controllers
         }
 
         [HttpGet("getby/clientId/{clientId}")]
-        public async Task<IActionResult> GetClientByClientId([FromRoute] string reportId)
+        public async Task<IActionResult> GetClientByClientId([FromRoute] string clientId)
         {
-            if (Guid.TryParse(reportId, out Guid result))
+            if (Guid.TryParse(clientId, out Guid result))
             {
                 Client client = await _clientRepository.GetClientById(result);
                 if (client == null)

@@ -1,198 +1,244 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Service Requests</title>
-</head>
-<body>
-    @Html.Partial("~/Views/Shared/Header.cshtml")
-    <div class="sr">
-        <div class="div">
-            <div class="text-wrapper">Search Request ID:</div>
-            <div class="rectangle"></div>
-            <button type="button" class="button" id="s-button">
-                <div class="button-text">Search</div>
-            </button>
-            <div class="frame">
-                <button type="button" class="button">
-                    <div class="button-text">Advance Status</div>
-                </button>
-                <button type="button" class="button">
-                    <div class="button-text">Reassign</div>
-                </button>
-                <button type="button" class="button">
-                    <div class="button-text">Escalate</div>
-                </button>
-                <button type="button" class="button">
-                    <div class="button-text">View Details</div>
-                </button>
-                <button type="button" class="button">
-                    <div class="button-text">Close</div>
-                </button>
-            </div>
-            <div class="text-wrapper-8">SERVICE REQUESTS</div>
-            <div class="table-container">
-                <table id="data-table">
-                    <thead>
-                        <tr>
-                            <th onclick="sortTable(0)">Priority Level</th>
-                            <th onclick="sortTable(1)">Request ID</th>
-                            <th onclick="sortTable(2)">Client Name</th>
-                            <th onclick="sortTable(3)">Status</th>
-                            <th onclick="sortTable(4)">Color</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Populate this section dynamically with your data -->
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>231</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <tr>
-                            <td>High</td>
-                            <td>123</td>
-                            <td>John Doe</td>
-                            <td>Approved</td>
-                            <td><input type="color" value="#ff0000" /></td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
-                </table>
+﻿@model IEnumerable<CallCenter.Models.WorkRequest>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Service Requests";
+}
+<style>
+    table {
+        width: 90%;
+        border-collapse: collapse;
+        justify-content: center;
+        font-family: "Inter-Regular", Helvetica;
+        font-weight: 400;
+        color: #000000;
+        font-size: 20px;
+        letter-spacing: 0;
+        line-height: 15px;
+    }
+
+    th,
+    td {
+        padding: 10px;
+        justify-content: center;
+    }
+
+    th {
+        background-color: #d6ebff;
+    }
+
+    button {
+        height: 100%;
+        width: 100px;
+        border: none;
+        background: #007bff;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    .frame {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        top: 500px;
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        width: 500px;
+        /* Adjust width to accommodate label and input */
+        margin-bottom: 10px;
+        /* Optional margin for spacing */
+    }
+
+    .search-label {
+        margin-right: 10px;
+        /* Space between label and search bar */
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        height: 50px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .heading-container {
+        position: relative;
+        left: 50px;
+        display: flex;
+        flex-direction: row;
+        gap: 900px;
+    }
+</style>
+<div class="sr">
+    <div class="div">
+        <div class="heading-container">
+             <h1>SERVICE REQUESTS</h1>
+            <div class="search-container">
+                <div class="search-label">Search by ID</div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Enter ID" />
+                    <button type="submit"
+                        style="margin-left: 150px; border-radius: 10px 0px 0px 10px;">Search</button>
+                </div>
             </div>
         </div>
+
+       
+        <div class="table-container">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Priority Level</th>
+                        <th onclick="sortTable(1)">Request ID</th>
+                        <th onclick="sortTable(2)">Client ID</th>
+                        <th onclick="sortTable(3)">Status</th>
+                        <th onclick="sortTable(4)">Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+
+                    {
+                        @foreach (var item in Model)
+
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.priority)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.requestId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.clientId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.status)
+                                </td>
+                                <td>
+                                    <div id="priorityCell">@Html.DisplayFor(modelItem => item.priority)</div>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                    else
+
+                    {
+                        <p>No data available.</p>
+                    }
+                    <div class="frame">
+                        <button type="button" class="button">
+                            <div class="button-text">Advance Status</div>
+                        </button>
+                        <button type="button" class="button">
+                            <div class="button-text">Reassign</div>
+                        </button>
+                        <button type="button" class="button">
+                            <div class="button-text">Escalate</div>
+                        </button>
+                    </div>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <script>
-        let ascending = true;
-        function sortTable(columnIndex) {
-            const table = document.getElementById("data-table");
-            const rows = Array.from(table.getElementsByTagName("tr"));
-            const isNumeric = columnIndex === 0 || columnIndex === 1;
+</div>
+<script>
+    let ascending = true;
+    function sortTable(columnIndex) {
+        const table = document.getElementById("data-table");
+        const rows = Array.from(table.getElementsByTagName("tr"));
+        const isNumeric = columnIndex === 0 || columnIndex === 1;
 
-            rows.shift(); // Remove the header row
+        rows.shift(); // Remove the header row
 
-            rows.sort((a, b) => {
-                let aText = a.getElementsByTagName("td")[columnIndex].innerText;
-                let bText = b.getElementsByTagName("td")[columnIndex].innerText;
+        rows.sort((a, b) => {
+            let aText = a.getElementsByTagName("td")[columnIndex].innerText;
+            let bText = b.getElementsByTagName("td")[columnIndex].innerText;
 
-                if (isNumeric) {
-                    aText = parseInt(aText);
-                    bText = parseInt(bText);
-                }
-
-                if (ascending) {
-                    return aText > bText ? 1 : -1;
-                } else {
-                    return aText < bText ? 1 : -1;
-                }
-            });
-
-            while (table.rows.length > 1) {
-                table.deleteRow(1);
+            if (isNumeric) {
+                aText = parseInt(aText);
+                bText = parseInt(bText);
             }
 
-            rows.forEach((row) => {
-                table.appendChild(row);
-            });
+            if (ascending) {
+                return aText > bText ? 1 : -1;
+            } else {
+                return aText < bText ? 1 : -1;
+            }
+        });
 
-            changeHeaderColor(columnIndex);
-            ascending = !ascending;
+        while (table.rows.length > 1) {
+            table.deleteRow(1);
         }
 
-        function changeHeaderColor(columnIndex) {
-            const headers = document.getElementsByTagName("th");
-            for (let i = 0; i < headers.length; i++) {
-                if (i === columnIndex) {
-                    headers[i].style.color = "#fff";
-                } else {
-                    headers[i].style.color = ""; // Reset other headers
-                }
+        rows.forEach((row) => {
+            table.appendChild(row);
+        });
+
+        changeHeaderColor(columnIndex);
+        ascending = !ascending;
+    }
+
+    function changeHeaderColor(columnIndex) {
+        const headers = document.getElementsByTagName("th");
+        for (let i = 0; i < headers.length; i++) {
+            if (i === columnIndex) {
+                headers[i].style.color = "#fff";
+            } else {
+                headers[i].style.color = ""; // Reset other headers
             }
         }
+    }
 
-        // Get the table element
-        let table = document.getElementById("table-data");
+    // Get the table element
+    let table = document.getElementById("table-data");
 
-        // Get all the rows inside the table
-        let rows = table.getElementsByTagName("tr");
+    // Get all the rows inside the table
+    let rows = table.getElementsByTagName("tr");
 
-        // Iterate through each row and attach a click event
-        for (let i = 0; i < rows.length; i++) {
-            rows[i].addEventListener("click", function () {
-                // Remove 'selected' class from all rows
-                for (let j = 0; j < rows.length; j++) {
-                    rows[j].classList.remove("selected");
-                }
+    // Iterate through each row and attach a click event
+    for (let i = 0; i < rows.length; i++) {
+        rows[i].addEventListener("click", function () {
+            // Remove 'selected' class from all rows
+            for (let j = 0; j < rows.length; j++) {
+                rows[j].classList.remove("selected");
+            }
 
-                // Add 'selected' class to the clicked row
-                this.classList.add("selected");
-            });
+            // Add 'selected' class to the clicked row
+            this.classList.add("selected");
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var table = document.getElementById("data-table");
+        var rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+            var priorityCell = rows[i].getElementsByTagName("td")[0]; // Assuming the priority cell is the first cell
+
+            var priority = priorityCell.innerText.toLowerCase().trim();
+
+            switch (priority) {
+                case 'high':
+                    priorityCell.style.color = 'red';
+                    break;
+                case 'medium':
+                    priorityCell.style.color = 'orange';
+                    break;
+                case 'low':
+                    priorityCell.style.color = 'yellow';
+                    break;
+                default:
+                    priorityCell.style.color = 'white';
+            }
         }
-    </script>
-</body>
-</html>
+    });
+        });
+</script>

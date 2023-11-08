@@ -6,7 +6,7 @@ namespace CallCenter.Types
         Guid clientId {get; set;}
         ContractType contractType {get; set;}
         string contractDetails {get; set;}
-        int serviceLevel {get; set;}
+        string serviceLevel {get; set;}
         ContractStatus contractStatus {get; set;}
 
     }

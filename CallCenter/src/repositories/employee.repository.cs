@@ -14,7 +14,7 @@ namespace CallCenter.Repository
             _dbService = dbService;
         }
 
-        private async Task<List<Employee>> ExecuteEmployeeQueryAsync(string queryName, SqlParameter[] parameters = null)
+        private async Task<List<Employee>> ExecuteEmployeeQueryAsync(string queryName, SqlParameter[]? parameters = null)
         {
             using (SqlConnection connection = _dbService.GetOpenConnection())
             using (SqlCommand command = _dbService.CreateCommand(queryName, connection))
@@ -55,10 +55,10 @@ namespace CallCenter.Repository
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Handle any exceptions that may occur during the execution of the stored procedure.
-                    throw ex;
+                    throw;
                 }
 
                 return employees;

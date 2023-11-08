@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 
 public class DatabaseServices
 {
-    private readonly string _connectionString;
+    private readonly string? _connectionString;
 
     public DatabaseServices(IConfiguration configuration)
     {
