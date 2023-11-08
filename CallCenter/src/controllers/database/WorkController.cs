@@ -94,8 +94,8 @@ namespace CallCenter.Controllers
         {
             if (Guid.TryParse(technicianId, out Guid result))
             {
-                Work work = await _workRepository.GetWorkById(result);
-                if (work == null)
+                List<Work> work = await _workRepository.GetWorkByTechnicianId(result);
+                if (work.Count < 1)
                 {
                     return NotFound();
                 }

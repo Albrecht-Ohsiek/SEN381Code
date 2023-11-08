@@ -35,7 +35,7 @@ namespace CallCenter.Repository
                         {
                             Work work = new Work
                             {
-                                workId = reader.GetGuid(reader.GetOrdinal("worId")),
+                                workId = reader.GetGuid(reader.GetOrdinal("workId")),
                                 technicianId = reader.GetGuid(reader.GetOrdinal("technicianId")),
                                 workDate = reader.GetDateTime(reader.GetOrdinal("workDate")),
                             };
@@ -100,7 +100,7 @@ namespace CallCenter.Repository
                 new SqlParameter("@technicianId", technicianId),
             };
 
-            return await ExecuteWorkQueryAsync("selectWorkById", parameters);
+            return await ExecuteWorkQueryAsync("selectWorkByTechnicianId", parameters);
         }
 
     }

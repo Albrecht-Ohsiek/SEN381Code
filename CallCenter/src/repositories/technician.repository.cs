@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.SqlTypes;
 using CallCenter.Models;
 using Microsoft.Data.SqlClient;
 
@@ -135,9 +136,15 @@ namespace CallCenter.Repository
 
         public async Task<List<Technician>> GetTechnicianByAvailability(string availability)
         {
+            SqlBoolean state = SqlBoolean.Zero;
+            if (availability == "true")
+            {
+                state = SqlBoolean.One;
+            }
+
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@availability", availability),
+                new SqlParameter("@availability", state),
             };
 
             return await ExecuteTechnicianQueryAsync("selectTechnicianByAvailability", parameters);
